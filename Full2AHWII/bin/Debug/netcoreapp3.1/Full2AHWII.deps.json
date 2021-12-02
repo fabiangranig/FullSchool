@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Full2AHWII/1.0.0": {
+        "runtime": {
+          "Full2AHWII.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Full2AHWII/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

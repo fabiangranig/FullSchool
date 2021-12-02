@@ -1,0 +1,13 @@
+C:\Users\fabex\3D Objects\Programmieren\Full2AHWII\Full2AHWII\bin\Debug\netcoreapp3.1\Full2AHWII.exe
+C:\Users\fabex\3D Objects\Programmieren\Full2AHWII\Full2AHWII\bin\Debug\netcoreapp3.1\Full2AHWII.deps.json
+C:\Users\fabex\3D Objects\Programmieren\Full2AHWII\Full2AHWII\bin\Debug\netcoreapp3.1\Full2AHWII.runtimeconfig.json
+C:\Users\fabex\3D Objects\Programmieren\Full2AHWII\Full2AHWII\bin\Debug\netcoreapp3.1\Full2AHWII.runtimeconfig.dev.json
+C:\Users\fabex\3D Objects\Programmieren\Full2AHWII\Full2AHWII\bin\Debug\netcoreapp3.1\Full2AHWII.dll
+C:\Users\fabex\3D Objects\Programmieren\Full2AHWII\Full2AHWII\bin\Debug\netcoreapp3.1\Full2AHWII.pdb
+C:\Users\fabex\3D Objects\Programmieren\Full2AHWII\Full2AHWII\obj\Debug\netcoreapp3.1\Full2AHWII.csprojAssemblyReference.cache
+C:\Users\fabex\3D Objects\Programmieren\Full2AHWII\Full2AHWII\obj\Debug\netcoreapp3.1\Full2AHWII.AssemblyInfoInputs.cache
+C:\Users\fabex\3D Objects\Programmieren\Full2AHWII\Full2AHWII\obj\Debug\netcoreapp3.1\Full2AHWII.AssemblyInfo.cs
+C:\Users\fabex\3D Objects\Programmieren\Full2AHWII\Full2AHWII\obj\Debug\netcoreapp3.1\Full2AHWII.csproj.CoreCompileInputs.cache
+C:\Users\fabex\3D Objects\Programmieren\Full2AHWII\Full2AHWII\obj\Debug\netcoreapp3.1\Full2AHWII.dll
+C:\Users\fabex\3D Objects\Programmieren\Full2AHWII\Full2AHWII\obj\Debug\netcoreapp3.1\Full2AHWII.pdb
+C:\Users\fabex\3D Objects\Programmieren\Full2AHWII\Full2AHWII\obj\Debug\netcoreapp3.1\Full2AHWII.genruntimeconfig.cache
