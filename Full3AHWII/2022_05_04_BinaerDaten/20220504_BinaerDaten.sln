@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20220504_BinaerDaten", "20220504_BinaerDaten.csproj", "{535875E6-A5E8-4F85-8D5D-E29645970009}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{535875E6-A5E8-4F85-8D5D-E29645970009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{535875E6-A5E8-4F85-8D5D-E29645970009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{535875E6-A5E8-4F85-8D5D-E29645970009}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{535875E6-A5E8-4F85-8D5D-E29645970009}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61513E40-6DD0-46B7-82EC-DA9A1BE3F2D0}
+	EndGlobalSection
+EndGlobal

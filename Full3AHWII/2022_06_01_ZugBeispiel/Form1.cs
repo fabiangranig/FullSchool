@@ -143,7 +143,90 @@ namespace _20220601_ZugBeispiel
                 //Alle Bits ausgeben
                 for(int u = 0; u < Bits.Length; u++)
                 {
-                    lB_Anweisungen.Items.Add((u + 1) + ".Bit: " + Bits[u]);
+                    //Context
+                    string context = "";
+                    
+                    //Bit 1
+                    if(u == 0 && Bits[u] == 0)
+                    {
+                        context = "Zug fährt";
+                    }
+                    else if(u == 0 && Bits[u] == 1)
+                    {
+                        context = "Zug steht";
+                    }
+
+                    //Bit 2
+                    if (u == 1 && Bits[u] == 0)
+                    {
+                        context = "Ampel grün";
+                    }
+                    else if(u == 1 && Bits[u] == 1)
+                    {
+                        context = "Ampel rot";
+                    }
+
+                    //Bit 3
+                    if (u == 2 && Bits[u] == 0)
+                    {
+                        context = "Weiche1 rechts gesetzt";
+                    }
+                    else if(u == 2 && Bits[u] == 1)
+                    {
+                        context = "Weiche1 links gesetzt";
+                    }
+
+                    //Bit 4
+                    if (u == 3 && Bits[u] == 0)
+                    {
+                        context = "Weiche2 rechts gesetzt";
+                    }
+                    else if(u == 3 && Bits[u] == 1)
+                    {
+                        context = "Weiche2 links gesetz";
+                    }
+
+                    //Bit 5
+                    if (u == 4 && Bits[u] == 0)
+                    {
+                        context = "Weiche3 rechts gesetzt";
+                    }
+                    else if(u == 4 && Bits[u] == 1)
+                    {
+                        context = "Weiche3 links gesetzt";
+                    }
+
+                    //Bit 6
+                    if (u == 5 && Bits[u] == 0)
+                    {
+                        context = "Tür geschlossen";
+                    }
+                    else if(u == 5 && Bits[u] == 1)
+                    {
+                        context = "Tür offen";
+                    }
+
+                    //Bit 7
+                    if (u == 6 && Bits[u] == 0)
+                    {
+                        context = "Licht aus";
+                    }
+                    else if(u == 6 && Bits[u] == 1)
+                    {
+                        context = "Licht ein";
+                    }
+
+                    //Bit 8
+                    if (u == 7 && Bits[u] == 0)
+                    {
+                        context = "Strom Oberleitung aus";
+                    }
+                    else if(u == 7 && Bits[u] == 1)
+                    {
+                        context = "Stom Oberleitung ein";
+                    }
+
+                    lB_Anweisungen.Items.Add((u + 1) + ".Bit: " + Bits[u] + " - " + context);
                 }
 
                 //Checken ob dieser Bit erlaubt ist
