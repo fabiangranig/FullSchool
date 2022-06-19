@@ -28,10 +28,19 @@ namespace _20220427_ListBoxWechsler
         {
             //Get all values to the other side
             int count = 0;
+            int count_items = lB2.Items.Count;
             foreach (var item in lB1.SelectedItems)
             {
-                lB2.Items.Insert(lB1.SelectedIndex + count, item);
-                count++;
+                if(count_items > lB1.SelectedIndex)
+                {
+                    lB2.Items.Insert(lB1.SelectedIndex + count, item);
+                    count++;
+                }
+                else
+                {
+                    lB2.Items.Add(item);
+                    count++;
+                }
             }
             
             //Remove the selected items
@@ -45,10 +54,19 @@ namespace _20220427_ListBoxWechsler
         {
             //Get all values to the other side
             int count = 0;
+            int count_items = lB1.Items.Count;
             foreach (var item in lB2.SelectedItems)
             {
-                lB1.Items.Insert(lB2.SelectedIndex + count, item);
-                count++;
+                if (count_items > lB2.SelectedIndex)
+                {
+                    lB1.Items.Insert(lB2.SelectedIndex + count, item);
+                    count++;
+                }
+                else
+                {
+                    lB1.Items.Add(item);
+                    count++;
+                }
             }
 
             //Remove the selected items
