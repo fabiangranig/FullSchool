@@ -22,8 +22,6 @@ namespace _20221028_Kontoverwaltung
         //Methoden
         public override void Abbuchen(double zum_Entfernen)
         {
-            base.Abbuchen(zum_Entfernen);
-
             //Verzinsung kontrollieren
             while (DateTime.Now > _Verzinsungsdatum + TimeSpan.FromDays(30 * 3))
             {
@@ -31,11 +29,11 @@ namespace _20221028_Kontoverwaltung
                 _Verzinsungsdatum.Add(TimeSpan.FromDays(30 * 3));
                 _Kontostand -= this._Quartalsgebuehr;
             }
+
+            base.Abbuchen(zum_Entfernen);
         }
         public override void Aufbuchen(double zum_Hinzufuegen)
         {
-            base.Aufbuchen(zum_Hinzufuegen);
-
             //Verzinsung kontrollieren
             while (DateTime.Now > _Verzinsungsdatum + TimeSpan.FromDays(30 * 3))
             {
@@ -43,10 +41,12 @@ namespace _20221028_Kontoverwaltung
                 _Verzinsungsdatum.Add(TimeSpan.FromDays(30 * 3));
                 _Kontostand -= this._Quartalsgebuehr;
             }
+
+            base.Aufbuchen(zum_Hinzufuegen);
         }
-        public override string ToString1()
+        public override string ToString()
         {
-            return "Kontonummer: " + this._Kontonummer + " - " + "Kontostand: " + this._Kontostand + " - " + "Verzinsungsdatum: " + this._Verzinsungsdatum + " - " + "Zinssatz: " + this._Zinssatz + " - " + "Quartalsgebühr: " + this._Quartalsgebuehr;
+            return "Kontonummer: " + this._Kontonummer + " - " + "Kontostand: " + Math.Round(this._Kontostand, 2) + " - " + "Verzinsungsdatum: " + this._Verzinsungsdatum + " - " + "Zinssatz: " + this._Zinssatz + " - " + "Quartalsgebühr: " + this._Quartalsgebuehr;
         }
     }
 }

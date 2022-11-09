@@ -23,37 +23,37 @@ namespace _20221028_Kontoverwaltung
         //Methoden
         public override void Aufbuchen(double zum_Hinzufuegen)
         {
-            base.Aufbuchen(zum_Hinzufuegen);
-
             this._AnzahlAbbuchung++;
 
             //Verzinsung kontrollieren
-            while(new DateTime(2024, 1, 1) > _Verzinsungsdatum + TimeSpan.FromDays(365))
+            while (DateTime.Now > _Verzinsungsdatum + TimeSpan.FromDays(365))
             {
                 _Kontostand *= (_Zinssatz / 100) + 1;
                 _Verzinsungsdatum += TimeSpan.FromDays(365);
                 _Kontostand -= (_AnzahlAbbuchung * _GebuehrProAbbuchung);
                 this._AnzahlAbbuchung = 0;
             }
+
+            base.Aufbuchen(zum_Hinzufuegen);
         }
         public override void Abbuchen(double zum_Entfernen)
         {
-            base.Abbuchen(zum_Entfernen);
-
             this._AnzahlAbbuchung++;
 
             //Verzinsung kontrollieren
-            while (new DateTime(2024, 1, 1) > _Verzinsungsdatum + TimeSpan.FromDays(365))
+            while (DateTime.Now > _Verzinsungsdatum + TimeSpan.FromDays(365))
             {
                 _Kontostand *= (_Zinssatz / 100) + 1;
                 _Verzinsungsdatum += TimeSpan.FromDays(365);
                 _Kontostand -= (_AnzahlAbbuchung * _GebuehrProAbbuchung);
                 this._AnzahlAbbuchung = 0;
             }
+
+            base.Abbuchen(zum_Entfernen);
         }
-        public override string ToString1()
+        public override string ToString()
         {
-            return "Kontonummer: " + this._Kontonummer + " - " + "Kontostand: " + this._Kontostand + " - " + "Verzinsungsdatum: " + this._Verzinsungsdatum + " - " + "Zinssatz: " + this._Zinssatz + " - " + "Gebühr: " + this._GebuehrProAbbuchung + " - " + "Anzahl Abbuchungen: " + this._AnzahlAbbuchung;
+            return "Kontonummer: " + this._Kontonummer + " - " + "Kontostand: " + Math.Round(this._Kontostand, 2) + " - " + "Verzinsungsdatum: " + this._Verzinsungsdatum + " - " + "Zinssatz: " + this._Zinssatz + " - " + "Gebühr: " + this._GebuehrProAbbuchung + " - " + "Anzahl Abbuchungen: " + this._AnzahlAbbuchung;
         }
     }
 }

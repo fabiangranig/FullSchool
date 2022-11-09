@@ -40,9 +40,9 @@ namespace _20221028_Kontoverwaltung
         public double KontostandAnzeigen()
         {
             //Den Kontostand zurückgeben
-            return this._Kontostand;
+            return Math.Round(this._Kontostand, 2);
         }
-        public virtual string ToString1()
+        public override string ToString()
         {
             //Alles zusammenfügen und zurückgeben
             return "Kontonummer: " + this._Kontonummer + " - " + "Kontostand: " + this._Kontostand + " - " + "Verzinsungsdatum: " + this._Verzinsungsdatum + " - " + "Zinssatz: " + this._Zinssatz;
