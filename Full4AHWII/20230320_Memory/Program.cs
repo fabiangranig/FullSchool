@@ -22,19 +22,60 @@ namespace _20230320_Memory
         //Memory cards
         private C_MemoryCards[] _memoryCards;
 
+        //Rankings
+        private C_Ranking _rankings = new C_Ranking();
+
         //Score
         private int _score;
         private int _count;
         private Label _lb_score;
+        private MenuStrip _Menu;
+        private ToolStripMenuItem textToolStripMenuItem;
+        private ToolStripMenuItem neustartenToolStripMenuItem;
+        private ToolStripMenuItem beendenToolStripMenuItem;
+        private ToolStripMenuItem ranglisteToolStripMenuItem;
         private Label _lb_count;
 
         public MemoryForm()
         {
+            //Get all elements added by forms
+            InitializeComponent();
+
             //Size of window and memory
-            this.Size = new Size(700, 700);
             _sizeHeight = 4;
             _sizeWidth = 4;
             _size = _sizeWidth * _sizeHeight;
+            this.Size = new Size(_sizeWidth * 120, _sizeHeight * 120 + 75);
+
+            //Add Score Label
+            _lb_score = new Label();
+            _lb_score.Location = new Point(30, 30);
+            _lb_score.Text = "Score: " + _score;
+            this.Controls.Add(_lb_score);
+
+            //Add Count Label
+            _lb_count = new Label();
+            _lb_count.Location = new Point(130, 30);
+            _lb_count.Text = "Count: " + _count;
+            this.Controls.Add(_lb_count);
+
+            //Get the map
+            CreateMap();
+
+            _rankings.AddValuesToTxt("Name1", 22);
+        }
+
+        public void CreateMap()
+        {
+            //When there is already an map remove it
+            if(_memoryCards != null)
+            {
+                //Remove all parts of the map
+                for(int i = 0; i < _memoryCards.Length; i++)
+                {
+                    this.Controls.Remove(_memoryCards[i]._picturebox);
+                }
+            }
 
             //Create memory cards
             _memoryCards = new C_MemoryCards[_size];
@@ -44,7 +85,7 @@ namespace _20230320_Memory
             int count = 0;
             for (int i = 0; i < _size; i++)
             {
-                if(count % 2 == 0)
+                if (count % 2 == 0)
                 {
                     image++;
                 }
@@ -63,7 +104,7 @@ namespace _20230320_Memory
             {
                 for (int y = 0; y < _sizeWidth; y++)
                 {
-                    _memoryCards[o]._picturebox.Location = new Point(100 * x + 20, 100 * y + 100);
+                    _memoryCards[o]._picturebox.Location = new Point(100 * x + 20, 100 * y + 65);
                     _memoryCards[o]._picturebox.Name = "PictureBox" + o;
                     _memoryCards[o]._picturebox.Click += new EventHandler(Check);
                     this.Controls.Add(_memoryCards[o]._picturebox);
@@ -71,19 +112,11 @@ namespace _20230320_Memory
                 }
             }
 
-            //Add Score Label
+            //Edit number labels
             _score = 0;
-            _lb_score = new Label();
-            _lb_score.Location = new Point(30, 30);
-            _lb_score.Text = "Score: " + _score;
-            this.Controls.Add(_lb_score);
-
-            //Add Count Label
+            _lb_score.Text = "Score: " + _score.ToString();
             _count = 0;
-            _lb_count = new Label();
-            _lb_count.Location = new Point(130, 30);
-            _lb_count.Text = "Count: " + _count;
-            this.Controls.Add(_lb_count);
+            _lb_count.Text = "Count: " + _count.ToString();
         }
 
         private void Check(object sender, EventArgs e)
@@ -146,6 +179,86 @@ namespace _20230320_Memory
                 _memoryCards[i] = _memoryCards[r];
                 _memoryCards[r] = sample;
             }
+        }
+
+        private void InitializeComponent()
+        {
+            this._Menu = new System.Windows.Forms.MenuStrip();
+            this.textToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.neustartenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ranglisteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._Menu.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // _Menu
+            // 
+            this._Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.textToolStripMenuItem,
+            this.ranglisteToolStripMenuItem});
+            this._Menu.Location = new System.Drawing.Point(0, 0);
+            this._Menu.Name = "_Menu";
+            this._Menu.Size = new System.Drawing.Size(472, 24);
+            this._Menu.TabIndex = 2;
+            this._Menu.Text = "Menü";
+            // 
+            // textToolStripMenuItem
+            // 
+            this.textToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.neustartenToolStripMenuItem,
+            this.beendenToolStripMenuItem});
+            this.textToolStripMenuItem.Name = "textToolStripMenuItem";
+            this.textToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.textToolStripMenuItem.Text = "Spiel";
+            // 
+            // neustartenToolStripMenuItem
+            // 
+            this.neustartenToolStripMenuItem.Name = "neustartenToolStripMenuItem";
+            this.neustartenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.neustartenToolStripMenuItem.Text = "Neustarten";
+            this.neustartenToolStripMenuItem.Click += new System.EventHandler(this.neustartenToolStripMenuItem_Click);
+            // 
+            // beendenToolStripMenuItem
+            // 
+            this.beendenToolStripMenuItem.Name = "beendenToolStripMenuItem";
+            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.beendenToolStripMenuItem.Text = "Beenden";
+            this.beendenToolStripMenuItem.Click += new System.EventHandler(this.beendenToolStripMenuItem_Click);
+            // 
+            // ranglisteToolStripMenuItem
+            // 
+            this.ranglisteToolStripMenuItem.Name = "ranglisteToolStripMenuItem";
+            this.ranglisteToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.ranglisteToolStripMenuItem.Text = "Rangliste";
+            this.ranglisteToolStripMenuItem.Click += new System.EventHandler(this.ranglisteToolStripMenuItem_Click);
+            // 
+            // MemoryForm
+            // 
+            this.ClientSize = new System.Drawing.Size(472, 396);
+            this.Controls.Add(this._Menu);
+            this.MainMenuStrip = this._Menu;
+            this.Name = "MemoryForm";
+            this._Menu.ResumeLayout(false);
+            this._Menu.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        private void neustartenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateMap();
+        }
+
+        private void beendenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ranglisteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RankingWindow RW = new RankingWindow(ref _rankings);
+            RW.Show();
         }
     }
 
