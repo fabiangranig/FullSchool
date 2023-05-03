@@ -48,7 +48,9 @@
     <Compile Include="C_MemoryCards.cs" />
     <Compile Include="C_NameWithScore.cs" />
     <Compile Include="C_Ranking.cs" />
-    <Compile Include="FinishedWindow.cs" />
+    <Compile Include="FinishedWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +63,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FinishedWindow.resx">
+      <DependentUpon>FinishedWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Program.resx">
       <DependentUpon>Program.cs</DependentUpon>
     </EmbeddedResource>

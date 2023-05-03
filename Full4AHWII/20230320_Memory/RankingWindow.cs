@@ -25,7 +25,7 @@ namespace _20230320_Memory
             InitializeComponent();
 
             //Fill in all rankings
-            List<C_NameWithScore> score_list = _Rankings.NamesWithScores;
+            List<C_NameWithScore> score_list = _Rankings.SortedList();
             for(int i = 0; i < score_list.Count; i++)
             {
                 if(i == 0)

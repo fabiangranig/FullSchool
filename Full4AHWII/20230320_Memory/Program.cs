@@ -34,18 +34,15 @@ namespace _20230320_Memory
         private ToolStripMenuItem neustartenToolStripMenuItem;
         private ToolStripMenuItem beendenToolStripMenuItem;
         private ToolStripMenuItem ranglisteToolStripMenuItem;
+        private ToolStripMenuItem mapToolStripMenuItem;
+        private ToolStripMenuItem mapKleinerToolStripMenuItem;
+        private ToolStripMenuItem mapGrößerToolStripMenuItem;
         private Label _lb_count;
 
         public MemoryForm()
         {
             //Get all elements added by forms
             InitializeComponent();
-
-            //Size of window and memory
-            _sizeHeight = 4;
-            _sizeWidth = 4;
-            _size = _sizeWidth * _sizeHeight;
-            this.Size = new Size(_sizeWidth * 120, _sizeHeight * 120 + 75);
 
             //Add Score Label
             _lb_score = new Label();
@@ -59,16 +56,22 @@ namespace _20230320_Memory
             _lb_count.Text = "Count: " + _count;
             this.Controls.Add(_lb_count);
 
+            //Default Size
+            _sizeHeight = 4;
+            _sizeWidth = 4;
+
             //Get the map
             CreateMap();
-
-            _rankings.AddValuesToTxt("Name1", 22);
         }
 
         public void CreateMap()
         {
+            //Size of window and memory
+            _size = _sizeWidth * _sizeHeight;
+            this.Size = new Size(_sizeWidth * 120, _sizeHeight * 120 + 75);
+
             //When there is already an map remove it
-            if(_memoryCards != null)
+            if (_memoryCards != null)
             {
                 //Remove all parts of the map
                 for(int i = 0; i < _memoryCards.Length; i++)
@@ -150,6 +153,13 @@ namespace _20230320_Memory
                 //Set count
                 _count++;
                 _lb_count.Text = "Count: " + _count;
+
+                //Show winning window
+                if(AllCardsOpened())
+                {
+                    FinishedWindow FW = new FinishedWindow(ref _rankings, _score * _count);
+                    FW.ShowDialog();
+                }
             }
 
             _last_index = index;
@@ -181,12 +191,30 @@ namespace _20230320_Memory
             }
         }
 
+        private bool AllCardsOpened()
+        {
+            //Check if there is an card that is not opened
+            for(int i = 0; i < _memoryCards.Length; i++)
+            {
+                if(_memoryCards[i]._found == false)
+                {
+                    return false;
+                }
+            }
+
+            //When all cards are opened return true
+            return true;
+        }
+
         private void InitializeComponent()
         {
             this._Menu = new System.Windows.Forms.MenuStrip();
             this.textToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.neustartenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapKleinerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapGrößerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ranglisteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._Menu.SuspendLayout();
             this.SuspendLayout();
@@ -195,6 +223,7 @@ namespace _20230320_Memory
             // 
             this._Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.textToolStripMenuItem,
+            this.mapToolStripMenuItem,
             this.ranglisteToolStripMenuItem});
             this._Menu.Location = new System.Drawing.Point(0, 0);
             this._Menu.Name = "_Menu";
@@ -214,16 +243,39 @@ namespace _20230320_Memory
             // neustartenToolStripMenuItem
             // 
             this.neustartenToolStripMenuItem.Name = "neustartenToolStripMenuItem";
-            this.neustartenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.neustartenToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.neustartenToolStripMenuItem.Text = "Neustarten";
             this.neustartenToolStripMenuItem.Click += new System.EventHandler(this.neustartenToolStripMenuItem_Click);
             // 
             // beendenToolStripMenuItem
             // 
             this.beendenToolStripMenuItem.Name = "beendenToolStripMenuItem";
-            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.beendenToolStripMenuItem.Text = "Beenden";
             this.beendenToolStripMenuItem.Click += new System.EventHandler(this.beendenToolStripMenuItem_Click);
+            // 
+            // mapToolStripMenuItem
+            // 
+            this.mapToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mapKleinerToolStripMenuItem,
+            this.mapGrößerToolStripMenuItem});
+            this.mapToolStripMenuItem.Name = "mapToolStripMenuItem";
+            this.mapToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.mapToolStripMenuItem.Text = "Map";
+            // 
+            // mapKleinerToolStripMenuItem
+            // 
+            this.mapKleinerToolStripMenuItem.Name = "mapKleinerToolStripMenuItem";
+            this.mapKleinerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mapKleinerToolStripMenuItem.Text = "Map kleiner";
+            this.mapKleinerToolStripMenuItem.Click += new System.EventHandler(this.mapKleinerToolStripMenuItem_Click);
+            // 
+            // mapGrößerToolStripMenuItem
+            // 
+            this.mapGrößerToolStripMenuItem.Name = "mapGrößerToolStripMenuItem";
+            this.mapGrößerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mapGrößerToolStripMenuItem.Text = "Map größer";
+            this.mapGrößerToolStripMenuItem.Click += new System.EventHandler(this.mapGrößerToolStripMenuItem_Click);
             // 
             // ranglisteToolStripMenuItem
             // 
@@ -238,6 +290,7 @@ namespace _20230320_Memory
             this.Controls.Add(this._Menu);
             this.MainMenuStrip = this._Menu;
             this.Name = "MemoryForm";
+            this.Text = "Memory";
             this._Menu.ResumeLayout(false);
             this._Menu.PerformLayout();
             this.ResumeLayout(false);
@@ -259,6 +312,20 @@ namespace _20230320_Memory
         {
             RankingWindow RW = new RankingWindow(ref _rankings);
             RW.Show();
+        }
+
+        private void mapKleinerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _sizeHeight -= 2;
+            _sizeWidth -= 2;
+            CreateMap();
+        }
+
+        private void mapGrößerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _sizeHeight += 2;
+            _sizeWidth += 2;
+            CreateMap();
         }
     }
 

@@ -29,6 +29,7 @@ namespace _20230320_Memory
         public void GetScoresFromTxt()
         {
             string[] all_lines = File.ReadAllLines(@"rankings.txt");
+            _NamesWithScores = new List<C_NameWithScore>();
 
             //Parse them to to the right format
             for(int i = 0; i < all_lines.Length; i++)
@@ -49,6 +50,28 @@ namespace _20230320_Memory
 
             sw.Close();
             fs.Close();
+        }
+
+        public List<C_NameWithScore> SortedList()
+        {
+            List<C_NameWithScore> temp = NamesWithScores;
+
+            //Bubble Sort the list
+            for (int i = 0; i < temp.Count; i++)
+            {
+                for(int u = 0; u < temp.Count; u++)
+                {
+                    if(temp[i]._Score > temp[u]._Score)
+                    {
+                        C_NameWithScore temp2 = temp[i];
+                        temp[i] = temp[u];
+                        temp[u] = temp2;
+                    }
+                }
+            }
+
+            //Return the sorted list
+            return temp;
         }
     }
 }
