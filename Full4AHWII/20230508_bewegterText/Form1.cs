@@ -28,12 +28,23 @@ namespace _20230508_bewegterText
         private ToolStripMenuItem _Oben;
         private ToolStripSeparator _Trenn2;
 
+        private ToolStripMenuItem _Layout;
+        private ToolStripMenuItem _Hintergrundfarbe;
+        private ToolStripMenuItem _Schriftart;
+        private ToolStripMenuItem _Blinken;
+
+        private ToolStripMenuItem _Text;
+        private ToolStripMenuItem _TextAendern;
+
         private int _Speed;
         private char _Direction;
         private Label _bewegenderText;
         private Timer _MovementTimer;
 
         private TrackBar _Trackbar;
+
+        private Color c1;
+        private Color c2;
 
 
         public Form1()
@@ -73,9 +84,27 @@ namespace _20230508_bewegterText
             _Trenn2 = new ToolStripSeparator();
             _Richtung.DropDownItems.Add(_Trenn2);
 
+            _Layout = new ToolStripMenuItem("Layout");
+            _Hintergrundfarbe = new ToolStripMenuItem("Hintergrundfarbe");
+            _Hintergrundfarbe.Click += _Hintergrundfarbe_Click;
+            _Layout.DropDownItems.Add(_Hintergrundfarbe);
+            _Schriftart = new ToolStripMenuItem("Schriftart");
+            _Schriftart.Click += _Schriftart_Click;
+            _Layout.DropDownItems.Add(_Schriftart);
+            _Blinken = new ToolStripMenuItem("Blinken");
+            _Blinken.Click += _Blinken_Click;
+            _Layout.DropDownItems.Add(_Blinken);
+
+            _Text = new ToolStripMenuItem("Text");
+            _TextAendern = new ToolStripMenuItem("Text ändern");
+            _TextAendern.Click += _TextAendern_Click;
+            _Text.DropDownItems.Add(_TextAendern);
+
             //Add Menues to bars
             _Menu.Items.Add(_Programm);
             _Menu.Items.Add(_Richtung);
+            _Menu.Items.Add(_Layout);
+            _Menu.Items.Add(_Text);
 
             //Add items to form
             this.Controls.Add(_Menu);
@@ -99,53 +128,148 @@ namespace _20230508_bewegterText
             this.Controls.Add(_bewegenderText);
         }
 
+        private void _TextAendern_Click(object sender, EventArgs e)
+        {
+            TextAendernUntermenue TAU = new TextAendernUntermenue(_bewegenderText.Text);
+            DialogResult result = TAU.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                _bewegenderText.Text = TAU.Aenderungstext;
+                _bewegenderText.Width = _bewegenderText.Text.Length * 10;
+            }
+        }
+
+        private void _Blinken_Click(object sender, EventArgs e)
+        {
+            //Set colors
+            ColorDialog MyDialog = new ColorDialog();
+            DialogResult MyRes;
+
+            MyDialog.Color = this.BackColor;
+            MyRes = MyDialog.ShowDialog();
+            if (MyRes == DialogResult.OK)
+            {
+                c1 = MyDialog.Color;
+            }
+
+            MyDialog.Color = this.BackColor;
+            MyRes = MyDialog.ShowDialog();
+            if (MyRes == DialogResult.OK)
+            {
+                c2 = MyDialog.Color;
+            }
+
+            //Set the first backcolor
+            this.BackColor = c1;
+
+            //Enable Blinker
+            Timer Blinker = new Timer();
+            Blinker.Interval = 1500;
+            Blinker.Tick += Blinker_Tick;
+            Blinker.Start();
+        }
+
+        private void Blinker_Tick(object sender, EventArgs e)
+        {
+            if(c1.Name == this.BackColor.Name)
+            {
+                this.BackColor = c2;
+            }
+            else if (c2.Name == this.BackColor.Name)
+            {
+                this.BackColor = c1;
+            }
+        }
+
+        private void _Schriftart_Click(object sender, EventArgs e)
+        {
+            FontDialog FD = new FontDialog();
+            DialogResult MyRes;
+            FD.Font = this.Font;
+            MyRes = FD.ShowDialog();
+
+            if(MyRes == DialogResult.OK)
+            {
+                this.Font = FD.Font;
+            }
+        }
+
+        private void _Hintergrundfarbe_Click(object sender, EventArgs e)
+        {
+            ColorDialog MyDialog = new ColorDialog();
+            DialogResult MyRes;
+            MyDialog.Color = this.BackColor;
+            MyRes = MyDialog.ShowDialog();
+
+            if(MyRes == DialogResult.OK)
+            {
+                this.BackColor = MyDialog.Color;
+            }
+        }
+
         public void DirectionSetter(object sender, EventArgs e)
         {
+            //Remove all clicked buttons
+            _Links.ForeColor = Color.Black;
+            _Rechts.ForeColor = Color.Black;
+            _Unten.ForeColor = Color.Black;
+            _Oben.ForeColor = Color.Black;
+
+            //Set clicked status
             ToolStripMenuItem temp = (ToolStripMenuItem)sender;
             _Direction = temp.Text[0];
+            temp.ForeColor = Color.Green;
         }
 
         public void StarterMove(object sender, EventArgs e)
         {
             //Timer for movement
             _MovementTimer = new Timer();
-            _MovementTimer.Interval = 10;
+            _MovementTimer.Interval = _Speed;
             _MovementTimer.Tick += TimerMovement;
             _MovementTimer.Start();
         }
 
         public void TimerMovement(object sender, EventArgs e)
         {
-            //Get the new position
+            //Set the speed
             _Speed = _Trackbar.Value;
 
             //Move towards that direction
-            if(_Direction == 'L')
+            if (_Direction == 'L')
             {
-                if(_bewegenderText.Location.X - _Speed > 0)
+                _bewegenderText.Location = new Point(_bewegenderText.Location.X - _Speed, _bewegenderText.Location.Y);
+
+                if(_bewegenderText.Location.X < -1 * _bewegenderText.Width)
                 {
-                    _bewegenderText.Location = new Point(_bewegenderText.Location.X - _Speed, _bewegenderText.Location.Y);
+                    _bewegenderText.Location = new Point(this.Width, _bewegenderText.Location.Y);
                 }
             }
             if (_Direction == 'R')
             {
-                if(_bewegenderText.Location.X + _Speed < this.Size.Width - _bewegenderText.Width)
+                _bewegenderText.Location = new Point(_bewegenderText.Location.X + _Speed, _bewegenderText.Location.Y);
+
+                if (_bewegenderText.Location.X > this.Width)
                 {
-                    _bewegenderText.Location = new Point(_bewegenderText.Location.X + _Speed, _bewegenderText.Location.Y);
+                    _bewegenderText.Location = new Point(-1 * _bewegenderText.Width, _bewegenderText.Location.Y);
                 }
             }
             if (_Direction == 'O')
             {
-                if(_bewegenderText.Location.Y - _Speed > 0 + 50)
+                _bewegenderText.Location = new Point(_bewegenderText.Location.X, _bewegenderText.Location.Y - _Speed);
+
+                if (_bewegenderText.Location.Y < 0)
                 {
-                    _bewegenderText.Location = new Point(_bewegenderText.Location.X, _bewegenderText.Location.Y - _Speed);
+                    _bewegenderText.Location = new Point(_bewegenderText.Location.X, this.Height);
                 }
             }
             if (_Direction == 'U')
             {
-                if(_bewegenderText.Location.Y + _Speed < this.Size.Height - _bewegenderText.Height - 50)
+                _bewegenderText.Location = new Point(_bewegenderText.Location.X, _bewegenderText.Location.Y + _Speed);
+
+                if (_bewegenderText.Location.Y > this.Height)
                 {
-                    _bewegenderText.Location = new Point(_bewegenderText.Location.X, _bewegenderText.Location.Y + _Speed);
+                    _bewegenderText.Location = new Point(_bewegenderText.Location.X, -20);
                 }
             }
         }

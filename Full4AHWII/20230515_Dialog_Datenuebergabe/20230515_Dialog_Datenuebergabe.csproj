@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DB6A00FF-D97B-42BE-B913-A0E6F164CEC5}</ProjectGuid>
+    <ProjectGuid>{240B9334-EBD8-4A22-88D7-D0A1B0D445D7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>_20230508_bewegterText</RootNamespace>
-    <AssemblyName>20230508_bewegterText</AssemblyName>
+    <RootNamespace>_20230515_Dialog_Datenuebergabe</RootNamespace>
+    <AssemblyName>20230515_Dialog_Datenuebergabe</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -54,11 +54,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextAendernUntermenue.cs">
+    <Compile Include="Unterformular.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TextAendernUntermenue.Designer.cs">
-      <DependentUpon>TextAendernUntermenue.cs</DependentUpon>
+    <Compile Include="Unterformular.Designer.cs">
+      <DependentUpon>Unterformular.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -72,8 +72,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="TextAendernUntermenue.resx">
-      <DependentUpon>TextAendernUntermenue.cs</DependentUpon>
+    <EmbeddedResource Include="Unterformular.resx">
+      <DependentUpon>Unterformular.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
