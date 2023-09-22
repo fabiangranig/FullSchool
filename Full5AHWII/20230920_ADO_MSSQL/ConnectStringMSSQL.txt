@@ -1,0 +1,4 @@
+"Data Source=INF5013;Initial Catalog=Employees;Integrated Security=true"
+
+Data Source ... Servername 
+Initial Catalog dem Datenbankname
