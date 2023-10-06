@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabellen</title>
+    <style>
+        table.table1 {
+            table-layout: fixed;
+        }
+
+        table.table1, table.table1 th, table.table1 td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table.table1 thead {
+            font-weight: bold;
+            background-color: lightgrey;
+        }
+
+        table.table1 td {
+            width: 100px;
+            height: 25px;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <table class="table1">
+        <caption>Life Expectancy By Current Age</caption>
+        <thead>
+            <tr>
+                <td colspan="2">65</td>
+                <td colspan="2">40</td>
+                <td colspan="2">20</td>
+            </tr>
+            <tr>
+                <td>Men</td>
+                <td>Women</td>
+                <td>Men</td>
+                <td>Woman</td>
+                <td>Men</td>
+                <td>Woman</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>82</td>
+                <td>85</td>
+                <td>78</td>
+                <td>82</td>
+                <td>77</td>
+                <td>81</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p></p>
+
+    <table class="table2" border="1">
+        <tr>
+            <td rowspan="2">webflips</td>
+            <td colspan="3">Geschäftszeiten</td>
+        </tr>
+        <tr>
+            <td>Mo. Di</td>
+            <td>Mi bis Fr</td>
+            <td>Sa</td>
+        </tr>
+        <tr>
+            <td rowspan="2">Vormittag</td>
+            <td>8-10</td>
+            <td rowspan="2">9-12</td>
+            <td rowspan="2"></td>
+        </tr>
+        <tr>
+            <td>11-12</td>
+        </tr>
+        <tr>
+            <td rowspan="2">Nachmittag</td>
+            <td rowspan="2">14-18</td>
+            <td>14-16</td>
+            <td rowspan="2">14-18</td>
+        </tr>
+        <tr>
+            <td>17-18</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td colspan="3">Tel. 1234567</td>
+        </tr>
+    </table>
+</body>
+</html>
