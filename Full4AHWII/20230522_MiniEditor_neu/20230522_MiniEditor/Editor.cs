@@ -299,14 +299,17 @@ namespace _20230522_MiniEditor
             _toolBarFont.Location = new Point(150, 10);
             _toolBarButtonBold = new Button();
             _toolBarButtonBold.Text = "F";
+            _toolBarButtonBold.Click += _toolBarButtonBold_Click;
             _toolBarButtonBold.Location = new Point(271, 10);
             _toolBarButtonBold.Size = new Size(50, 20);;
             _toolBarButtonItalic = new Button();
             _toolBarButtonItalic.Text = "I";
+            _toolBarButtonItalic.Click += _toolBarButtonItalic_Click;
             _toolBarButtonItalic.Location = new Point(321, 10);
             _toolBarButtonItalic.Size = new Size(50, 20);
             _toolBarButtonUnterline = new Button();
             _toolBarButtonUnterline.Text = "U";
+            _toolBarButtonUnterline.Click += _toolBarButtonUnterline_Click;
             _toolBarButtonUnterline.Location = new Point(371, 10);
             _toolBarButtonUnterline.Size = new Size(50, 20);
             foreach (FontFamily font in FontFamily.Families) { _toolBarFont.Items.Add(font.Name); }
@@ -623,6 +626,21 @@ namespace _20230522_MiniEditor
         private void _Rueckgängig_Click(object sender, EventArgs e)
         {
             _TextBox.Undo();
+        }
+
+        private void _toolBarButtonBold_Click(object sender, EventArgs e)
+        {
+            _TextBox.SelectionFont = new Font(_TextBox.SelectionFont, FontStyle.Bold);
+        }
+
+        private void _toolBarButtonItalic_Click(object sender, EventArgs e)
+        {
+            _TextBox.SelectionFont = new Font(_TextBox.SelectionFont, FontStyle.Italic);
+        }
+
+        private void _toolBarButtonUnterline_Click(object sender, EventArgs e)
+        {
+            _TextBox.SelectionFont = new Font(_TextBox.SelectionFont, FontStyle.Underline);
         }
 
         private void _CutOut_Click(object sender, EventArgs e)
