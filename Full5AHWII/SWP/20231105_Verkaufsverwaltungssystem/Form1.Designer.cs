@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView_MainScreen = new System.Windows.Forms.DataGridView();
             this.button_VerkaufNeu = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_MainScreen)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridView_MainScreen
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(98, 95);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(480, 276);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView_MainScreen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_MainScreen.Location = new System.Drawing.Point(36, 76);
+            this.dataGridView_MainScreen.MultiSelect = false;
+            this.dataGridView_MainScreen.Name = "dataGridView_MainScreen";
+            this.dataGridView_MainScreen.ReadOnly = true;
+            this.dataGridView_MainScreen.Size = new System.Drawing.Size(871, 276);
+            this.dataGridView_MainScreen.TabIndex = 0;
             // 
             // button_VerkaufNeu
             // 
@@ -57,19 +57,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1184, 472);
             this.Controls.Add(this.button_VerkaufNeu);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView_MainScreen);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_MainScreen)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView_MainScreen;
         private System.Windows.Forms.Button button_VerkaufNeu;
     }
 }
