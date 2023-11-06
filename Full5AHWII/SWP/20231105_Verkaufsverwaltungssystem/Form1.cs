@@ -21,16 +21,22 @@ namespace _20231105_Verkaufsverwaltungssystem
         private DataSet _DataSetVerkauf;
         private BindingSource _BindingSourceVerkauf;
         private SqlCommand _SQLCommandVerkaufInsert;
+        private SqlCommand _SQLCommandVerkaufUpdate;
+        private SqlCommand _SQLCommandVerkaufDelete;
 
         private SqlDataAdapter _SQLDataAdapterKundennummer;
         private SqlCommand _SQLCommandKundennummer;
         private DataSet _DataSetKundennummer;
         private BindingSource _BindingSourceKunde;
+        private SqlCommand _SQLCommandKundeInsert;
+        private SqlCommand _SQLCommandKundeDelete;
 
         private SqlDataAdapter _SQLDataAdapterProdukt;
         private SqlCommand _SQLCommandProdukt;
         private DataSet _DataSetProdukt;
         private BindingSource _BindingSourceProdukt;
+        private SqlCommand _SQLCommandProduktInsert;
+        private SqlCommand _SQLCommandProduktDelete;
 
         public Form1()
         {
@@ -69,6 +75,19 @@ namespace _20231105_Verkaufsverwaltungssystem
             _SQLCommandVerkaufInsert.Parameters.Add("@MENGE", SqlDbType.Float, 32, "MENGE");
             _SQLCommandVerkaufInsert.Parameters.Add("@DATUM", SqlDbType.DateTime, 32, "DATUM");
             _SQLDataAdapterVerkauf.InsertCommand = _SQLCommandVerkaufInsert;
+
+            //Update command
+            _SQLCommandVerkaufUpdate = new SqlCommand("UPDATE VERKAUF SET PRODUKT_ID = @PRODUKT_ID, KDN_ID = @KDN_ID, MENGE = @Menge WHERE DATUM = @DATUM;", _SQLConnection);
+            _SQLCommandVerkaufUpdate.Parameters.Add("@PRODUKT_ID", SqlDbType.Int, 32, "PRODUKT_ID");
+            _SQLCommandVerkaufUpdate.Parameters.Add("@KDN_ID", SqlDbType.Int, 32, "KDN_ID");
+            _SQLCommandVerkaufUpdate.Parameters.Add("@MENGE", SqlDbType.Float, 32, "MENGE");
+            _SQLCommandVerkaufUpdate.Parameters.Add("@DATUM", SqlDbType.DateTime, 32, "DATUM");
+            _SQLDataAdapterVerkauf.UpdateCommand = _SQLCommandVerkaufUpdate;
+
+            //Delete command
+            _SQLCommandVerkaufDelete = new SqlCommand("DELETE FROM VERKAUF WHERE DATUM = @DATUM;", _SQLConnection);
+            _SQLCommandVerkaufDelete.Parameters.Add("@DATUM", SqlDbType.DateTime, 32, "DATUM");
+            _SQLDataAdapterVerkauf.DeleteCommand = _SQLCommandVerkaufDelete;
         }
 
         private void CreateTableKundeObjects()
@@ -97,14 +116,65 @@ namespace _20231105_Verkaufsverwaltungssystem
             _BindingSourceProdukt.DataSource = _DataSetProdukt;
             _BindingSourceProdukt.DataMember = "Produkt";
             _BindingSourceProdukt.DataSource = _DataSetProdukt.Tables["Produkt"];
+
+            //Add the InsertCommand for Produkt
+            _SQLCommandProduktInsert = new SqlCommand("INSERT INTO Produkt (PRODUKT_ID, PName, Preis) VALUES (@PRODUKT_ID, @PNAME, @PREIS)", _SQLConnection);
+            _SQLCommandProduktInsert.Parameters.Add("@PRODUKT_ID", SqlDbType.Int, 32, "PRODUKT_ID");
+            _SQLCommandProduktInsert.Parameters.Add("@PNAME", SqlDbType.Text, 32, "PNAME");
+            _SQLCommandProduktInsert.Parameters.Add("@PREIS", SqlDbType.Float, 32, "PREIS");
+            _SQLDataAdapterProdukt.InsertCommand = _SQLCommandProduktInsert;
+
+            //Delete command
+            _SQLCommandProduktDelete = new SqlCommand("DELETE FROM Produkt WHERE Produkt_ID = @PRODUKT_ID;", _SQLConnection);
+            _SQLCommandProduktDelete.Parameters.Add("@PRODUKT_ID", SqlDbType.Int, 32, "PRODUKT_ID");
+            _SQLDataAdapterProdukt.DeleteCommand = _SQLCommandProduktDelete;
         }
 
         private void button_VerkaufNeu_Click(object sender, EventArgs e)
         {
-            VerkaufNeuOderBearbeiten VK = new VerkaufNeuOderBearbeiten(_BindingSourceVerkauf, _BindingSourceKunde, _BindingSourceProdukt);
+            VerkaufNeuOderBearbeiten VK = new VerkaufNeuOderBearbeiten(_BindingSourceVerkauf, _BindingSourceKunde, _BindingSourceProdukt, false);
             VK.ShowDialog();
             _SQLDataAdapterVerkauf.Update(_DataSetVerkauf, "Verkauf");
-            _BindingSourceVerkauf.ResetBindings(false);
+
+            _DataSetVerkauf.Tables["Verkauf"].Clear();
+            _SQLDataAdapterVerkauf.FillSchema(_DataSetVerkauf, SchemaType.Source, "Verkauf");
+            _SQLDataAdapterVerkauf.Fill(_DataSetVerkauf, "Verkauf");
+        }
+
+        private void button_Bearbeiten_Click(object sender, EventArgs e)
+        {
+            VerkaufNeuOderBearbeiten VK = new VerkaufNeuOderBearbeiten(_BindingSourceVerkauf, _BindingSourceKunde, _BindingSourceProdukt, true);
+            VK.ShowDialog();
+            _SQLDataAdapterVerkauf.Update(_DataSetVerkauf, "Verkauf");
+        }
+
+        private void button_Stornieren_Click(object sender, EventArgs e)
+        {
+            if (_BindingSourceVerkauf.Current != null)
+            {
+                _BindingSourceVerkauf.RemoveCurrent();
+                _SQLDataAdapterVerkauf.Update(_DataSetVerkauf, "Verkauf");
+            }
+        }
+
+        private void button_OK_Click(object sender, EventArgs e)
+        {
+            //Close application
+            this.Close();
+        }
+
+        private void button_KundeWarten_Click(object sender, EventArgs e)
+        {
+            string[] ColumnNames = { "KDN_ID", "Nachname", "Vorname", "PLZ", "Adresse" };
+            ObjektWarten OW = new ObjektWarten("Kunde", ColumnNames, ref _DataSetKundennummer, _SQLDataAdapterKundennummer, _BindingSourceKunde);
+            OW.ShowDialog();
+        }
+
+        private void button_ProduktWarten_Click(object sender, EventArgs e)
+        {
+            string[] ColumnNames = { "Produkt_ID", "PName", "Preis" };
+            ObjektWarten OW = new ObjektWarten("Produkt", ColumnNames, ref _DataSetProdukt, _SQLDataAdapterProdukt, _BindingSourceProdukt);
+            OW.ShowDialog();
         }
     }
 }

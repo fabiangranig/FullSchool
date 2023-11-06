@@ -37,18 +37,21 @@
             // dataGridView_Auswahl
             // 
             this.dataGridView_Auswahl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Auswahl.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView_Auswahl.Location = new System.Drawing.Point(16, 15);
+            this.dataGridView_Auswahl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView_Auswahl.MultiSelect = false;
             this.dataGridView_Auswahl.Name = "dataGridView_Auswahl";
             this.dataGridView_Auswahl.ReadOnly = true;
-            this.dataGridView_Auswahl.Size = new System.Drawing.Size(398, 153);
+            this.dataGridView_Auswahl.RowHeadersWidth = 51;
+            this.dataGridView_Auswahl.Size = new System.Drawing.Size(531, 188);
             this.dataGridView_Auswahl.TabIndex = 0;
             // 
             // button_Ok
             // 
-            this.button_Ok.Location = new System.Drawing.Point(433, 12);
+            this.button_Ok.Location = new System.Drawing.Point(577, 15);
+            this.button_Ok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Ok.Name = "button_Ok";
-            this.button_Ok.Size = new System.Drawing.Size(75, 23);
+            this.button_Ok.Size = new System.Drawing.Size(100, 28);
             this.button_Ok.TabIndex = 1;
             this.button_Ok.Text = "Ok";
             this.button_Ok.UseVisualStyleBackColor = true;
@@ -56,9 +59,10 @@
             // 
             // button_Cancel
             // 
-            this.button_Cancel.Location = new System.Drawing.Point(433, 142);
+            this.button_Cancel.Location = new System.Drawing.Point(577, 175);
+            this.button_Cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Cancel.Name = "button_Cancel";
-            this.button_Cancel.Size = new System.Drawing.Size(75, 23);
+            this.button_Cancel.Size = new System.Drawing.Size(100, 28);
             this.button_Cancel.TabIndex = 2;
             this.button_Cancel.Text = "Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
@@ -66,12 +70,13 @@
             // 
             // AuswahlSuche
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 189);
+            this.ClientSize = new System.Drawing.Size(705, 233);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_Ok);
             this.Controls.Add(this.dataGridView_Auswahl);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AuswahlSuche";
             this.Text = "AuswahlSuche";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Auswahl)).EndInit();

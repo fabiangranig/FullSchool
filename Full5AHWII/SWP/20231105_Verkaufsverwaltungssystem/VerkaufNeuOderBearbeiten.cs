@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,7 +18,7 @@ namespace _20231105_Verkaufsverwaltungssystem
         private BindingSource _BindingSourceKunde;
         private BindingSource _BindingSourceProdukt;
 
-        public VerkaufNeuOderBearbeiten(BindingSource BindingSourceVerkauf, BindingSource BindingSourceKunde, BindingSource BindingSourceProdukt)
+        public VerkaufNeuOderBearbeiten(BindingSource BindingSourceVerkauf, BindingSource BindingSourceKunde, BindingSource BindingSourceProdukt, bool EditMode)
         {
             InitializeComponent();
 
@@ -49,8 +50,11 @@ namespace _20231105_Verkaufsverwaltungssystem
             textBox_Menge.DataBindings.Add("Text", _BindingSourceVerkauf, "MENGE");
             textBox_Datum.DataBindings.Add("Text", _BindingSourceVerkauf, "DATUM");
 
-            //Start editing
-            _BindingSourceVerkauf.AddNew();
+            if(EditMode == false)
+            {
+                //Start editing
+                _BindingSourceVerkauf.AddNew();
+            }
         }
 
         private void button_KundennummerSuchen_Click(object sender, EventArgs e)
