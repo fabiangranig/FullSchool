@@ -1,0 +1,23 @@
+#navigation {
+    list-style-type: none;
+    background-color: grey;
+    padding: 10px;
+    width: 358px;
+}
+
+#navigation li {
+    margin-bottom: 10px;
+    display: inline;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#navigation li a {
+    color: white;
+    text-decoration: none;
+}
+
+#navigation li:hover {
+    background-color: #9C3;
+    padding: 11px;
+}
