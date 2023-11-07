@@ -1,0 +1,7 @@
+D:\Git\FullSchool\Full2AHWII_2\20231106_PixelArt_X\bin\Debug\20231106_PixelArt_X.exe.config
+D:\Git\FullSchool\Full2AHWII_2\20231106_PixelArt_X\bin\Debug\20231106_PixelArt_X.exe
+D:\Git\FullSchool\Full2AHWII_2\20231106_PixelArt_X\bin\Debug\20231106_PixelArt_X.pdb
+D:\Git\FullSchool\Full2AHWII_2\20231106_PixelArt_X\obj\Debug\20231106_PixelArt_X.csproj.AssemblyReference.cache
+D:\Git\FullSchool\Full2AHWII_2\20231106_PixelArt_X\obj\Debug\20231106_PixelArt_X.csproj.CoreCompileInputs.cache
+D:\Git\FullSchool\Full2AHWII_2\20231106_PixelArt_X\obj\Debug\20231106_PixelArt_X.exe
+D:\Git\FullSchool\Full2AHWII_2\20231106_PixelArt_X\obj\Debug\20231106_PixelArt_X.pdb
