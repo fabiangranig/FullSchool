@@ -24,7 +24,7 @@ namespace _20231105_Verkaufsverwaltungssystem
         private SqlCommand _SQLCommandVerkaufUpdate;
         private SqlCommand _SQLCommandVerkaufDelete;
 
-        private SqlDataAdapter _SQLDataAdapterKundennummer;
+        private SqlDataAdapter _SQLDataAdapterKunden;
         private SqlCommand _SQLCommandKundennummer;
         private DataSet _DataSetKundennummer;
         private BindingSource _BindingSourceKunde;
@@ -92,16 +92,30 @@ namespace _20231105_Verkaufsverwaltungssystem
 
         private void CreateTableKundeObjects()
         {
-            _SQLDataAdapterKundennummer = new SqlDataAdapter();
+            _SQLDataAdapterKunden = new SqlDataAdapter();
             _SQLCommandKundennummer = new SqlCommand("SELECT * FROM Kunde;", _SQLConnection);
-            _SQLDataAdapterKundennummer.SelectCommand = _SQLCommandKundennummer;
+            _SQLDataAdapterKunden.SelectCommand = _SQLCommandKundennummer;
             _DataSetKundennummer = new DataSet();
-            _SQLDataAdapterKundennummer.FillSchema(_DataSetKundennummer, SchemaType.Source, "Kunde");
-            _SQLDataAdapterKundennummer.Fill(_DataSetKundennummer, "Kunde");
+            _SQLDataAdapterKunden.FillSchema(_DataSetKundennummer, SchemaType.Source, "Kunde");
+            _SQLDataAdapterKunden.Fill(_DataSetKundennummer, "Kunde");
             _BindingSourceKunde = new BindingSource();
             _BindingSourceKunde.DataSource = _DataSetKundennummer;
             _BindingSourceKunde.DataMember = "Kunde";
             _BindingSourceKunde.DataSource = _DataSetKundennummer.Tables["Kunde"];
+
+            //Add the InsertCommand for Produkt
+            _SQLCommandKundeInsert = new SqlCommand("INSERT INTO Kunde (KDN_ID, Nachname, Vorname, PLZ, Adresse) VALUES (@KDN_ID, @Nachname, @Vorname, @PLZ, @Adresse)", _SQLConnection);
+            _SQLCommandKundeInsert.Parameters.Add("@KDN_ID", SqlDbType.Int, 32, "KDN_ID");
+            _SQLCommandKundeInsert.Parameters.Add("@Nachname", SqlDbType.Text, 32, "Nachname");
+            _SQLCommandKundeInsert.Parameters.Add("@Vorname", SqlDbType.Text, 32, "Vorname");
+            _SQLCommandKundeInsert.Parameters.Add("@PLZ", SqlDbType.Int, 32, "PLZ");
+            _SQLCommandKundeInsert.Parameters.Add("@Adresse", SqlDbType.Text, 32, "Adresse");
+            _SQLDataAdapterKunden.InsertCommand = _SQLCommandKundeInsert;
+
+            //Delete command
+            _SQLCommandKundeDelete = new SqlCommand("DELETE FROM Kunde WHERE KDN_ID = @KDN_ID;", _SQLConnection);
+            _SQLCommandKundeDelete.Parameters.Add("@KDN_ID", SqlDbType.Int, 32, "KDN_ID");
+            _SQLDataAdapterKunden.DeleteCommand = _SQLCommandKundeDelete;
         }
 
         private void CreateTableProduktObjects()
@@ -146,6 +160,10 @@ namespace _20231105_Verkaufsverwaltungssystem
             VerkaufNeuOderBearbeiten VK = new VerkaufNeuOderBearbeiten(_BindingSourceVerkauf, _BindingSourceKunde, _BindingSourceProdukt, true);
             VK.ShowDialog();
             _SQLDataAdapterVerkauf.Update(_DataSetVerkauf, "Verkauf");
+
+            _DataSetVerkauf.Tables["Verkauf"].Clear();
+            _SQLDataAdapterVerkauf.FillSchema(_DataSetVerkauf, SchemaType.Source, "Verkauf");
+            _SQLDataAdapterVerkauf.Fill(_DataSetVerkauf, "Verkauf");
         }
 
         private void button_Stornieren_Click(object sender, EventArgs e)
@@ -166,7 +184,7 @@ namespace _20231105_Verkaufsverwaltungssystem
         private void button_KundeWarten_Click(object sender, EventArgs e)
         {
             string[] ColumnNames = { "KDN_ID", "Nachname", "Vorname", "PLZ", "Adresse" };
-            ObjektWarten OW = new ObjektWarten("Kunde", ColumnNames, ref _DataSetKundennummer, _SQLDataAdapterKundennummer, _BindingSourceKunde);
+            ObjektWarten OW = new ObjektWarten("Kunde", ColumnNames, ref _DataSetKundennummer, _SQLDataAdapterKunden, _BindingSourceKunde);
             OW.ShowDialog();
         }
 

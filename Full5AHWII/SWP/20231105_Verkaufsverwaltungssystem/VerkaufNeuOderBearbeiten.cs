@@ -38,15 +38,7 @@ namespace _20231105_Verkaufsverwaltungssystem
 
             //Add the textboxes to the BindingData
             comboBox_Kundenummer.DataBindings.Add("SelectedValue", _BindingSourceVerkauf, "KDN_ID");
-            if(comboBox_Kundenummer.Items.Count > 0)
-            {
-                comboBox_Kundenummer.SelectedIndex = 0;
-            }
             comboBox_Produkt.DataBindings.Add("SelectedValue", _BindingSourceVerkauf, "Produkt_ID");
-            if (comboBox_Produkt.Items.Count > 0)
-            {
-                comboBox_Produkt.SelectedIndex = 0;
-            }
             textBox_Menge.DataBindings.Add("Text", _BindingSourceVerkauf, "MENGE");
             textBox_Datum.DataBindings.Add("Text", _BindingSourceVerkauf, "DATUM");
 
@@ -54,6 +46,11 @@ namespace _20231105_Verkaufsverwaltungssystem
             {
                 //Start editing
                 _BindingSourceVerkauf.AddNew();
+
+                //Set default values
+                DataRowView DefaultRowView = (DataRowView)_BindingSourceVerkauf.Current;
+                DefaultRowView["Menge"] = "1";
+                DefaultRowView["Datum"] = DateTime.Now.ToString();
             }
         }
 

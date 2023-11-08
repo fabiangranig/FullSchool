@@ -86,7 +86,7 @@
             // 
             this.comboBox_Kundenummer.FormattingEnabled = true;
             this.comboBox_Kundenummer.Location = new System.Drawing.Point(128, 23);
-            this.comboBox_Kundenummer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox_Kundenummer.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Kundenummer.Name = "comboBox_Kundenummer";
             this.comboBox_Kundenummer.Size = new System.Drawing.Size(216, 24);
             this.comboBox_Kundenummer.TabIndex = 4;
@@ -95,7 +95,7 @@
             // 
             this.comboBox_Produkt.FormattingEnabled = true;
             this.comboBox_Produkt.Location = new System.Drawing.Point(128, 70);
-            this.comboBox_Produkt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox_Produkt.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox_Produkt.Name = "comboBox_Produkt";
             this.comboBox_Produkt.Size = new System.Drawing.Size(216, 24);
             this.comboBox_Produkt.TabIndex = 5;
@@ -103,7 +103,7 @@
             // textBox_Menge
             // 
             this.textBox_Menge.Location = new System.Drawing.Point(128, 116);
-            this.textBox_Menge.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_Menge.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Menge.Name = "textBox_Menge";
             this.textBox_Menge.Size = new System.Drawing.Size(216, 22);
             this.textBox_Menge.TabIndex = 6;
@@ -111,15 +111,16 @@
             // textBox_Datum
             // 
             this.textBox_Datum.Location = new System.Drawing.Point(128, 160);
-            this.textBox_Datum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_Datum.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Datum.Name = "textBox_Datum";
+            this.textBox_Datum.ReadOnly = true;
             this.textBox_Datum.Size = new System.Drawing.Size(216, 22);
             this.textBox_Datum.TabIndex = 7;
             // 
             // button_KundennummerSuchen
             // 
             this.button_KundennummerSuchen.Location = new System.Drawing.Point(365, 21);
-            this.button_KundennummerSuchen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_KundennummerSuchen.Margin = new System.Windows.Forms.Padding(4);
             this.button_KundennummerSuchen.Name = "button_KundennummerSuchen";
             this.button_KundennummerSuchen.Size = new System.Drawing.Size(100, 28);
             this.button_KundennummerSuchen.TabIndex = 8;
@@ -130,7 +131,7 @@
             // button_ProduktSuchen
             // 
             this.button_ProduktSuchen.Location = new System.Drawing.Point(365, 68);
-            this.button_ProduktSuchen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_ProduktSuchen.Margin = new System.Windows.Forms.Padding(4);
             this.button_ProduktSuchen.Name = "button_ProduktSuchen";
             this.button_ProduktSuchen.Size = new System.Drawing.Size(100, 28);
             this.button_ProduktSuchen.TabIndex = 9;
@@ -141,7 +142,7 @@
             // button_Ok
             // 
             this.button_Ok.Location = new System.Drawing.Point(233, 267);
-            this.button_Ok.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Ok.Margin = new System.Windows.Forms.Padding(4);
             this.button_Ok.Name = "button_Ok";
             this.button_Ok.Size = new System.Drawing.Size(100, 28);
             this.button_Ok.TabIndex = 10;
@@ -152,7 +153,7 @@
             // button_Cancel
             // 
             this.button_Cancel.Location = new System.Drawing.Point(365, 267);
-            this.button_Cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Cancel.Margin = new System.Windows.Forms.Padding(4);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(100, 28);
             this.button_Cancel.TabIndex = 11;
@@ -177,7 +178,7 @@
             this.Controls.Add(this.label_Menge);
             this.Controls.Add(this.label_Produkt);
             this.Controls.Add(this.label_Kundennummer);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "VerkaufNeuOderBearbeiten";
             this.Text = "VerkaufNeuOderBearbeiten";
             this.ResumeLayout(false);
