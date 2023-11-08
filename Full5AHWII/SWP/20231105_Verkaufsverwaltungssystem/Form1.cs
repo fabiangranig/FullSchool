@@ -85,7 +85,7 @@ namespace _20231105_Verkaufsverwaltungssystem
             _SQLDataAdapterVerkauf.UpdateCommand = _SQLCommandVerkaufUpdate;
 
             //Delete command
-            _SQLCommandVerkaufDelete = new SqlCommand("DELETE FROM VERKAUF WHERE DATUM = @DATUM;", _SQLConnection);
+            _SQLCommandVerkaufDelete = new SqlCommand("DELETE FROM VERKAUF;", _SQLConnection);
             _SQLCommandVerkaufDelete.Parameters.Add("@DATUM", SqlDbType.DateTime, 32, "DATUM");
             _SQLDataAdapterVerkauf.DeleteCommand = _SQLCommandVerkaufDelete;
         }
