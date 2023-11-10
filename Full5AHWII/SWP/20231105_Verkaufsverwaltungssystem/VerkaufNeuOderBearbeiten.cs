@@ -41,7 +41,7 @@ namespace _20231105_Verkaufsverwaltungssystem
             comboBox_Produkt.DataBindings.Add("SelectedValue", _BindingSourceVerkauf, "Produkt_ID");
             textBox_Menge.DataBindings.Add("Text", _BindingSourceVerkauf, "MENGE");
             textBox_Datum.DataBindings.Add("Text", _BindingSourceVerkauf, "DATUM");
-
+            
             if(EditMode == false)
             {
                 //Start editing
