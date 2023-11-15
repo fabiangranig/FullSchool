@@ -15,11 +15,6 @@ namespace _20231106_PixelArt_X
             OnlyOneIf(20);
         }
 
-        static void NoIf(int size)
-        {
-            
-        }
-
         static void OnlyOneIf(int size)
         {
             for (int y = 0; y < size; y++)
