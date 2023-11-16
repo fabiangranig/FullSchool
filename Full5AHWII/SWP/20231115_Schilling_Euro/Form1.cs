@@ -123,17 +123,62 @@ namespace _20231115_Schilling_Euro
 
         private void button_Speichern_Click(object sender, EventArgs e)
         {
+            //Drop the tables
+            DropTwoTables();
 
+            //Create the two tables
+            CreateTwoTables();
+
+            //Fill the tables
+            for(int i = 0; i < this.listView_richtigeDatensaetze.Items.Count; i++)
+            {
+                ListViewItem item = this.listView_richtigeDatensaetze.Items[i];
+                FastExecuteNonQuery("INSERT INTO Bankomatauszug (ID, Schilling, Euro) VALUES (" + item.SubItems[0].Text + ", " + item.SubItems[1].Text + "," + item.SubItems[2].Text + ");");
+            }
+
+            for (int i = 0; i < this.listView_falscheDatensaetze.Items.Count; i++)
+            {
+                ListViewItem item = this.listView_falscheDatensaetze.Items[i];
+                FastExecuteNonQuery("INSERT INTO AuszugFehler (ID, Schilling, Euro) VALUES (" + item.SubItems[0].Text + ", " + item.SubItems[1].Text + "," + item.SubItems[2].Text + ");");
+            }
         }
 
-        private void TabellenErstellen()
+        private void DropTwoTables()
         {
-
+            try
+            {
+                FastExecuteNonQuery("DROP TABLE BankomatAuszug;");
+            }
+            catch(Exception e)
+            {
+                _OleDBConnection.Close();
+            }
+            try
+            {
+                FastExecuteNonQuery("DROP TABLE AuszugFehler;");
+            }
+            catch (Exception e)
+            {
+                _OleDBConnection.Close();
+            }
         }
 
-        private void ListViewZuDatenbankHinzufuegen()
+        private void CreateTwoTables()
         {
+            FastExecuteNonQuery("CREATE TABLE Bankomatauszug (ID int, Schilling float, Euro float, CONSTRAINT PK_BankomatAuszug_ID PRIMARY KEY(ID))");
+            FastExecuteNonQuery("CREATE TABLE Auszugfehler (ID int, Schilling float, Euro float, CONSTRAINT PK_BankomatAuszug_ID PRIMARY KEY(ID))");
+        }
 
+        private void FastExecuteNonQuery(string query)
+        {
+            _OleDBConnection.Open();
+
+            OleDbCommand Command = new OleDbCommand();
+            Command.Connection = _OleDBConnection;
+            Command.CommandText = query;
+            Command.ExecuteNonQuery();
+
+            _OleDBConnection.Close();
         }
     }
 }
