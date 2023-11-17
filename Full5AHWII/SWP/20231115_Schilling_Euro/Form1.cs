@@ -98,23 +98,6 @@ namespace _20231115_Schilling_Euro
             this.label_falscheSchillingUndEuro.Text = "Schilling: " + falscheSchilling + " " + "Euro: " + falscheEuro;
         }
 
-        private string ChangePointToComma(string input)
-        {
-            string result = "";
-            for(int i = 0; i < input.Length; i++)
-            {
-                if (input[i] == '.')
-                {
-                    result += ',';
-                }
-                else
-                {
-                    result += input[i];
-                }
-            }
-            return result;
-        }
-
         private void button_Beenden_Click(object sender, EventArgs e)
         {
             //Close the app
