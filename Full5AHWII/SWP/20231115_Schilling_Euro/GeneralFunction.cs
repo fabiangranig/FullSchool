@@ -8,7 +8,7 @@ namespace _20231115_Schilling_Euro
 {
     internal class GeneralFunction
     {
-        private string ChangePointToComma(string input)
+        public static string ChangePointToComma(string input)
         {
             string result = "";
             for (int i = 0; i < input.Length; i++)
