@@ -53,7 +53,7 @@ namespace _20231115_Schilling_Euro
         }
 
         private void button_Speichern_Click(object sender, EventArgs e)
-        {
+        {   
             //Drop the tables
             DropTwoTables();
 
@@ -88,8 +88,8 @@ namespace _20231115_Schilling_Euro
                 string[] parts = zeilen.Split(';');
 
                 //Get current Schilling and Euro
-                double schilling = Convert.ToDouble(GeneralFunction.ChangePointToComma(parts[1]));
-                double euro = Convert.ToDouble(GeneralFunction.ChangePointToComma(parts[2]));
+                double schilling = Convert.ToDouble(parts[1].Replace('.', ','));
+                double euro = Convert.ToDouble(parts[2].Replace('.', ','));
 
                 //Check to which listview this line should be added
                 if(Math.Round(schilling * 13.7603, 3) == Math.Round(euro, 3))
