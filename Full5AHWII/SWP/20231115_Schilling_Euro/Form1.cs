@@ -37,7 +37,7 @@ namespace _20231115_Schilling_Euro
         {
             //Show the dialog
             FileDialog FD = new OpenFileDialog();
-            FD.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
+            FD.Filter = "csv-Bankfiles (*.csv)|*.csv|All files (*.*)|*.*";
             DialogResult result = FD.ShowDialog();
 
             //Use the result
