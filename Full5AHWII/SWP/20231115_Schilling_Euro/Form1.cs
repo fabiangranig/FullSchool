@@ -37,6 +37,7 @@ namespace _20231115_Schilling_Euro
         {
             //Show the dialog
             FileDialog FD = new OpenFileDialog();
+            FD.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
             DialogResult result = FD.ShowDialog();
 
             //Use the result
@@ -125,8 +126,8 @@ namespace _20231115_Schilling_Euro
         {
             //Add columns
             listview.Columns.Add("ID");
-            listview.Columns.Add("Schilling");
             listview.Columns.Add("Euro");
+            listview.Columns.Add("Schilling");
 
             //Change column size
             listview.Columns[0].Width = 40;
@@ -136,8 +137,8 @@ namespace _20231115_Schilling_Euro
         private void UpdateLabels()
         {
             //Set the value
-            this.label_korrekteSchillingUndEuro.Text = "Schilling: " + _korrekteSchilling + " --- " + "Euro: " + _korrekteEuro;
-            this.label_falscheSchillingUndEuro.Text = "Schilling: " + _falscheSchilling + " --- " + "Euro: " + _falscheEuro;
+            this.label_korrekteSchillingUndEuro.Text = "Euro: " + _korrekteSchilling + " --- " + "Schilling: " + _korrekteEuro;
+            this.label_falscheSchillingUndEuro.Text = "Euro: " + _falscheSchilling + " --- " + "Schilling: " + _falscheEuro;
         }
 
         private void DropTwoTables()
