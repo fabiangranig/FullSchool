@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _20231127_ConnectedKunden
 {
-    internal class KundenEintrag
+    public class KundenEintrag
     {
         private string _KundenCode;
         private string _Firma;

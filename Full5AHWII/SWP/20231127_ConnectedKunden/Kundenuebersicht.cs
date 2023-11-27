@@ -146,5 +146,11 @@ namespace _20231127_ConnectedKunden
         {
             DisplayFromListFilter(textBox_Kundennummer.Text, textBox_Firma.Text, textBox_Kontaktperson.Text);
         }
+
+        private void button_Neu_Click(object sender, EventArgs e)
+        {
+            KundeNeuUndBearbeiten KNUB = new KundeNeuUndBearbeiten(_OleDBConnection);
+            KNUB.ShowDialog();
+        }
     }
 }

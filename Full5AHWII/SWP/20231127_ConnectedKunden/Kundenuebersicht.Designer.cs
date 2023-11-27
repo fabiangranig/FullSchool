@@ -74,18 +74,19 @@
             // 
             // button_Neu
             // 
-            this.button_Neu.Location = new System.Drawing.Point(16, 356);
-            this.button_Neu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Neu.Location = new System.Drawing.Point(16, 350);
+            this.button_Neu.Margin = new System.Windows.Forms.Padding(4);
             this.button_Neu.Name = "button_Neu";
             this.button_Neu.Size = new System.Drawing.Size(100, 28);
             this.button_Neu.TabIndex = 3;
             this.button_Neu.Text = "Neu";
             this.button_Neu.UseVisualStyleBackColor = true;
+            this.button_Neu.Click += new System.EventHandler(this.button_Neu_Click);
             // 
             // button_Aendern
             // 
-            this.button_Aendern.Location = new System.Drawing.Point(124, 356);
-            this.button_Aendern.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Aendern.Location = new System.Drawing.Point(124, 350);
+            this.button_Aendern.Margin = new System.Windows.Forms.Padding(4);
             this.button_Aendern.Name = "button_Aendern";
             this.button_Aendern.Size = new System.Drawing.Size(100, 28);
             this.button_Aendern.TabIndex = 4;
@@ -94,8 +95,8 @@
             // 
             // button_Loeschen
             // 
-            this.button_Loeschen.Location = new System.Drawing.Point(232, 356);
-            this.button_Loeschen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Loeschen.Location = new System.Drawing.Point(232, 350);
+            this.button_Loeschen.Margin = new System.Windows.Forms.Padding(4);
             this.button_Loeschen.Name = "button_Loeschen";
             this.button_Loeschen.Size = new System.Drawing.Size(100, 28);
             this.button_Loeschen.TabIndex = 5;
@@ -104,8 +105,8 @@
             // 
             // button_Anzeigen
             // 
-            this.button_Anzeigen.Location = new System.Drawing.Point(340, 356);
-            this.button_Anzeigen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Anzeigen.Location = new System.Drawing.Point(340, 350);
+            this.button_Anzeigen.Margin = new System.Windows.Forms.Padding(4);
             this.button_Anzeigen.Name = "button_Anzeigen";
             this.button_Anzeigen.Size = new System.Drawing.Size(100, 28);
             this.button_Anzeigen.TabIndex = 6;
@@ -114,8 +115,8 @@
             // 
             // button_Schliessen
             // 
-            this.button_Schliessen.Location = new System.Drawing.Point(663, 356);
-            this.button_Schliessen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Schliessen.Location = new System.Drawing.Point(661, 350);
+            this.button_Schliessen.Margin = new System.Windows.Forms.Padding(4);
             this.button_Schliessen.Name = "button_Schliessen";
             this.button_Schliessen.Size = new System.Drawing.Size(100, 28);
             this.button_Schliessen.TabIndex = 7;
@@ -126,7 +127,7 @@
             // textBox_Kundennummer
             // 
             this.textBox_Kundennummer.Location = new System.Drawing.Point(16, 36);
-            this.textBox_Kundennummer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_Kundennummer.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Kundennummer.Name = "textBox_Kundennummer";
             this.textBox_Kundennummer.Size = new System.Drawing.Size(132, 22);
             this.textBox_Kundennummer.TabIndex = 8;
@@ -135,7 +136,7 @@
             // textBox_Firma
             // 
             this.textBox_Firma.Location = new System.Drawing.Point(157, 36);
-            this.textBox_Firma.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_Firma.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Firma.Name = "textBox_Firma";
             this.textBox_Firma.Size = new System.Drawing.Size(132, 22);
             this.textBox_Firma.TabIndex = 9;
@@ -144,7 +145,7 @@
             // textBox_Kontaktperson
             // 
             this.textBox_Kontaktperson.Location = new System.Drawing.Point(299, 36);
-            this.textBox_Kontaktperson.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_Kontaktperson.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Kontaktperson.Name = "textBox_Kontaktperson";
             this.textBox_Kontaktperson.Size = new System.Drawing.Size(132, 22);
             this.textBox_Kontaktperson.TabIndex = 10;
@@ -154,7 +155,7 @@
             // 
             this.listView_Kunden.HideSelection = false;
             this.listView_Kunden.Location = new System.Drawing.Point(16, 81);
-            this.listView_Kunden.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listView_Kunden.Margin = new System.Windows.Forms.Padding(4);
             this.listView_Kunden.Name = "listView_Kunden";
             this.listView_Kunden.Size = new System.Drawing.Size(745, 253);
             this.listView_Kunden.TabIndex = 11;
@@ -178,7 +179,7 @@
             this.Controls.Add(this.label_Kontaktperson);
             this.Controls.Add(this.label_Firma);
             this.Controls.Add(this.label_Kundennummer);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(794, 438);
             this.Name = "Kundenuebersicht";
             this.Text = "Kundenübersicht";
