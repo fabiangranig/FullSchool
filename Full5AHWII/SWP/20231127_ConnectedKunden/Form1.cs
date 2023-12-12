@@ -24,7 +24,7 @@ namespace _20231127_ConnectedKunden
             this.IsMdiContainer = true;
 
             //Create the connection string
-            this._ConnectionString = "Data Source=../../Nordwind.mdb; Provider=Microsoft.Jet.OLEDB.4.0";
+            this._ConnectionString = "Data Source=Nordwind.mdb; Provider=Microsoft.Jet.OLEDB.4.0";
             this._OleDBConnection = new OleDbConnection(this._ConnectionString);
 
             _Ku = new Kundenuebersicht(this._OleDBConnection);

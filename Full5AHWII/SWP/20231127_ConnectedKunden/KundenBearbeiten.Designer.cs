@@ -1,7 +1,7 @@
 ﻿
 namespace _20231127_ConnectedKunden
 {
-    partial class KundeNeuUndBearbeiten
+    partial class KundenBearbeiten
     {
         /// <summary>
         /// Required designer variable.

@@ -31,18 +31,29 @@ namespace _20231127_ConnectedKunden
 
             //Add columns to listview
             this.listView_Kunden.Columns.Add("KundenCode");
+            this.listView_Kunden.Columns[0].Width = 75;
             this.listView_Kunden.Columns.Add("Firma");
+            this.listView_Kunden.Columns[1].Width = 200;
             this.listView_Kunden.Columns.Add("Kontaktperson");
+            this.listView_Kunden.Columns[2].Width = 100;
             this.listView_Kunden.Columns.Add("Position");
+            this.listView_Kunden.Columns[3].Width = 150;
 
             this.listView_Kunden.Columns.Add("Strasse");
+            this.listView_Kunden.Columns[4].Width = 200;
             this.listView_Kunden.Columns.Add("Ort");
+            this.listView_Kunden.Columns[5].Width = 100;
             this.listView_Kunden.Columns.Add("Region");
+            this.listView_Kunden.Columns[6].Width = 100;
             this.listView_Kunden.Columns.Add("PLZ");
+            this.listView_Kunden.Columns[7].Width = 100;
 
             this.listView_Kunden.Columns.Add("Land");
+            this.listView_Kunden.Columns[8].Width = 100;
             this.listView_Kunden.Columns.Add("Telefon");
+            this.listView_Kunden.Columns[9].Width = 100;
             this.listView_Kunden.Columns.Add("Telefax");
+            this.listView_Kunden.Columns[10].Width = 100;
 
             //Get Table from Database
             GetTableFromDataBase();
@@ -149,8 +160,45 @@ namespace _20231127_ConnectedKunden
 
         private void button_Neu_Click(object sender, EventArgs e)
         {
-            KundeNeuUndBearbeiten KNUB = new KundeNeuUndBearbeiten(_OleDBConnection);
+            KundenBearbeiten KNUB = new KundenBearbeiten(_OleDBConnection, Modus.Neu);
             KNUB.ShowDialog();
+            GetTableFromDataBase();
+            DisplayFromList();
+        }
+
+        private void button_Aendern_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ListViewItem item = this.listView_Kunden.Items[this.listView_Kunden.SelectedIndices[0]];
+
+                //Search the master table for that entry
+                for (int i = 0; i < this.KundenEintraege.Count; i++)
+                {
+                    if (item.SubItems[0].Text == this.KundenEintraege[i].KundenCode)
+                    {
+                        KundenBearbeiten KNUB = new KundenBearbeiten(_OleDBConnection, Modus.Aendern, this.KundenEintraege[i]);
+                        KNUB.ShowDialog();
+                        GetTableFromDataBase();
+                        DisplayFromList();
+                        break;
+                    }
+                }
+            }
+            catch(Exception er)
+            {
+                MessageBox.Show("kein Eintrag wurde ausgewählt! -> " + er.ToString());
+            }
+        }
+
+        private void button_Loeschen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_Anzeigen_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

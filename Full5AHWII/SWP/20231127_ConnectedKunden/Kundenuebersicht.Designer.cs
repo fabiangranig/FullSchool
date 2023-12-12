@@ -92,6 +92,7 @@
             this.button_Aendern.TabIndex = 4;
             this.button_Aendern.Text = "Ändern";
             this.button_Aendern.UseVisualStyleBackColor = true;
+            this.button_Aendern.Click += new System.EventHandler(this.button_Aendern_Click);
             // 
             // button_Loeschen
             // 
@@ -102,6 +103,7 @@
             this.button_Loeschen.TabIndex = 5;
             this.button_Loeschen.Text = "Löschen";
             this.button_Loeschen.UseVisualStyleBackColor = true;
+            this.button_Loeschen.Click += new System.EventHandler(this.button_Loeschen_Click);
             // 
             // button_Anzeigen
             // 
@@ -112,6 +114,7 @@
             this.button_Anzeigen.TabIndex = 6;
             this.button_Anzeigen.Text = "Anzeigen";
             this.button_Anzeigen.UseVisualStyleBackColor = true;
+            this.button_Anzeigen.Click += new System.EventHandler(this.button_Anzeigen_Click);
             // 
             // button_Schliessen
             // 
@@ -156,6 +159,7 @@
             this.listView_Kunden.HideSelection = false;
             this.listView_Kunden.Location = new System.Drawing.Point(16, 81);
             this.listView_Kunden.Margin = new System.Windows.Forms.Padding(4);
+            this.listView_Kunden.MultiSelect = false;
             this.listView_Kunden.Name = "listView_Kunden";
             this.listView_Kunden.Size = new System.Drawing.Size(745, 253);
             this.listView_Kunden.TabIndex = 11;

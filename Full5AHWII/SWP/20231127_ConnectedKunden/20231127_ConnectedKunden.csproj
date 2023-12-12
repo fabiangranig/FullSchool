@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modus.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,11 +54,11 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="KundenEintrag.cs" />
-    <Compile Include="KundeNeuUndBearbeiten.cs">
+    <Compile Include="KundenBearbeiten.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="KundeNeuUndBearbeiten.Designer.cs">
-      <DependentUpon>KundeNeuUndBearbeiten.cs</DependentUpon>
+    <Compile Include="KundenBearbeiten.Designer.cs">
+      <DependentUpon>KundenBearbeiten.cs</DependentUpon>
     </Compile>
     <Compile Include="Kundenuebersicht.cs">
       <SubType>Form</SubType>
@@ -70,8 +71,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="KundeNeuUndBearbeiten.resx">
-      <DependentUpon>KundeNeuUndBearbeiten.cs</DependentUpon>
+    <EmbeddedResource Include="KundenBearbeiten.resx">
+      <DependentUpon>KundenBearbeiten.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Kundenuebersicht.resx">
       <DependentUpon>Kundenuebersicht.cs</DependentUpon>
