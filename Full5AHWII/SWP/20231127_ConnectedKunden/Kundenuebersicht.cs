@@ -166,7 +166,7 @@ namespace _20231127_ConnectedKunden
             DisplayFromList();
         }
 
-        private void button_Aendern_Click(object sender, EventArgs e)
+        private int GetListIDByKundenNummer()
         {
             try
             {
@@ -177,28 +177,62 @@ namespace _20231127_ConnectedKunden
                 {
                     if (item.SubItems[0].Text == this.KundenEintraege[i].KundenCode)
                     {
-                        KundenBearbeiten KNUB = new KundenBearbeiten(_OleDBConnection, Modus.Aendern, this.KundenEintraege[i]);
-                        KNUB.ShowDialog();
-                        GetTableFromDataBase();
-                        DisplayFromList();
-                        break;
+                        return i;
                     }
                 }
             }
-            catch(Exception er)
+            catch (Exception er)
             {
                 MessageBox.Show("kein Eintrag wurde ausgewählt! -> " + er.ToString());
+                return -1;
+            }
+            return -1;
+        }
+
+        private void button_Aendern_Click(object sender, EventArgs e)
+        {
+            int id = GetListIDByKundenNummer();
+            if(id != -1)
+            {
+                KundenBearbeiten KNUB = new KundenBearbeiten(_OleDBConnection, Modus.Aendern, this.KundenEintraege[id]);
+                KNUB.ShowDialog();
+                GetTableFromDataBase();
+                DisplayFromList();
             }
         }
 
         private void button_Loeschen_Click(object sender, EventArgs e)
         {
+            int id = GetListIDByKundenNummer();
+            if (id != -1)
+            {
+                //Open the connection
+                _OleDBConnection.Open();
 
+                //Set the command and execute it
+                OleDbCommand Command = new OleDbCommand();
+                Command.Connection = _OleDBConnection;
+                Command.CommandText = "DELETE FROM Kunden WHERE Kundencode = '" + this.KundenEintraege[id].KundenCode + "'";
+                Command.ExecuteNonQuery();
+
+                //Close the connections
+                _OleDBConnection.Close();
+
+                GetTableFromDataBase();
+                DisplayFromList();
+            }
         }
 
         private void button_Anzeigen_Click(object sender, EventArgs e)
         {
-
+            int id = GetListIDByKundenNummer();
+            if (id != -1)
+            {
+                KundenBearbeiten KNUB = new KundenBearbeiten(_OleDBConnection, Modus.Anzeigen, this.KundenEintraege[id]);
+                KNUB.ShowDialog();
+                GetTableFromDataBase();
+                DisplayFromList();
+            }
         }
     }
 }

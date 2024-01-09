@@ -11,19 +11,19 @@ using System.Data.OleDb;
 
 namespace _20231127_ConnectedKunden
 {
-    public partial class KundenBearbeiten : Form
+    public partial class LieferantenBearbeiten : Form
     {
         private OleDbConnection _OleDBConnection;
         private Modus _Modus;
 
-        public KundenBearbeiten(OleDbConnection oleDbConnection, Modus modus)
+        public LieferantenBearbeiten(OleDbConnection oleDbConnection, Modus modus)
         {
             InitializeComponent();
             this._OleDBConnection = oleDbConnection;
             this._Modus = modus;
         }
 
-        public KundenBearbeiten(OleDbConnection oleDbConnection, Modus modus, KundenEintrag kunden)
+        public LieferantenBearbeiten(OleDbConnection oleDbConnection, Modus modus, LieferantenEintrag kunden)
         {
             InitializeComponent();
             this._OleDBConnection = oleDbConnection;
@@ -31,7 +31,7 @@ namespace _20231127_ConnectedKunden
             textBox_KundenCode.Enabled = false;
 
             //Set starting values
-            textBox_KundenCode.Text = kunden.KundenCode;
+            textBox_KundenCode.Text = Convert.ToString(kunden.Lieferanten_Nr);
             textBox_Firma.Text = kunden.Firma;
             textBox_Kontaktperson.Text = kunden.Kontaktperson;
             textBox_Position.Text = kunden.Position;
@@ -42,8 +42,9 @@ namespace _20231127_ConnectedKunden
             textBox_Region.Text = kunden.Region;
             textBox_PLZ.Text = kunden.PLZ;
             textBox_Land.Text = kunden.Land;
+            textBox_Website.Text = kunden.Website;
 
-            if(this._Modus == Modus.Anzeigen)
+            if (this._Modus == Modus.Anzeigen)
             {
                 textBox_KundenCode.Enabled = false;
                 textBox_Firma.Enabled = false;
@@ -56,10 +57,7 @@ namespace _20231127_ConnectedKunden
                 textBox_Region.Enabled = false;
                 textBox_PLZ.Enabled = false;
                 textBox_Land.Enabled = false;
-                textBox_Ort.Text = kunden.Ort;
-                textBox_Region.Text = kunden.Region;
-                textBox_PLZ.Text = kunden.PLZ;
-                textBox_Land.Text = kunden.Land;
+                textBox_Website.Enabled = false;
             }
         }
 
@@ -71,7 +69,7 @@ namespace _20231127_ConnectedKunden
 
         private void button_Ok_Click(object sender, EventArgs e)
         {
-            if(this._Modus == Modus.Neu)
+            if (this._Modus == Modus.Neu)
             {
                 if (textBox_KundenCode.Text != "")
                 {
@@ -81,16 +79,18 @@ namespace _20231127_ConnectedKunden
                     //Set the command and execute it
                     OleDbCommand Command = new OleDbCommand();
                     Command.Connection = _OleDBConnection;
-                    Command.CommandText = "INSERT INTO Kunden (KundenCode, Firma, Kontaktperson, [Position]," +
-                        "Strasse, Ort, Region, PLZ, Land, Telefon, Telefax)" +
+                    Command.CommandText = "INSERT INTO Lieferanten ([Lieferanten-Nr], Firma, Kontaktperson, [Position]," +
+                        "Straße, Ort, Region, PLZ, Land, Telefon, Telefax, Homepage)" +
                         "VALUES ('" + textBox_KundenCode.Text + "', '" + textBox_Firma.Text + "', '" + textBox_Kontaktperson.Text +
                         "', '" + textBox_Position.Text + "', '" + textBox_Strasse.Text + "', '" + textBox_Ort.Text +
                         "', '" + textBox_Region.Text + "', '" + textBox_PLZ.Text + "', '" + textBox_Land.Text + "', '" + textBox_Telephon.Text +
-                        "', '" + textBox_Telefax.Text + "')";
-                    
+                        "', '" + textBox_Telefax.Text + "', '" + textBox_Website.Text +  "')";
+
+                    Command.ExecuteNonQuery();
+
                     try
                     {
-                        Command.ExecuteNonQuery();
+                        
 
                         //Close the connections
                         _OleDBConnection.Close();
@@ -98,7 +98,7 @@ namespace _20231127_ConnectedKunden
                         //Close the windows
                         this.Close();
                     }
-                    catch(Exception e1)
+                    catch (Exception e1)
                     {
                         MessageBox.Show("Der Primärschlüssel existiert schon!");
 
@@ -112,7 +112,7 @@ namespace _20231127_ConnectedKunden
                 }
             }
 
-            if(this._Modus == Modus.Aendern)
+            if (this._Modus == Modus.Aendern)
             {
                 //Open the connection
                 _OleDBConnection.Open();
@@ -120,10 +120,10 @@ namespace _20231127_ConnectedKunden
                 //Set the command and execute it
                 OleDbCommand Command = new OleDbCommand();
                 Command.Connection = _OleDBConnection;
-                Command.CommandText = "UPDATE Kunden SET Firma = '" + textBox_Firma.Text + "', Kontaktperson = '" + textBox_Kontaktperson.Text + "', [Position] = '"
-                    + textBox_Position.Text + "', Strasse = '" + textBox_Strasse.Text + "', Ort = '" + textBox_Ort.Text + "', Region = '"
+                Command.CommandText = "UPDATE Lieferanten SET Firma = '" + textBox_Firma.Text + "', Kontaktperson = '" + textBox_Kontaktperson.Text + "', [Position] = '"
+                    + textBox_Position.Text + "', Straße = '" + textBox_Strasse.Text + "', Ort = '" + textBox_Ort.Text + "', Region = '"
                     + textBox_Region.Text + "', PLZ = '" + textBox_PLZ.Text + "', Land = '" + textBox_Land.Text + "', Telefon = '" + textBox_Telephon.Text
-                    + "', Telefax = '" + textBox_Telefax.Text + "' WHERE KundenCode = '" + textBox_KundenCode.Text + "';";
+                    + "', Telefax = '" + textBox_Telefax.Text + "', Homepage = '" + textBox_Website.Text + "'  WHERE Lieferanten.[Lieferanten-Nr] = " + textBox_KundenCode.Text + ";";
                 Command.ExecuteNonQuery();
 
                 //Close the connections
@@ -133,7 +133,7 @@ namespace _20231127_ConnectedKunden
                 this.Close();
             }
 
-            if(this._Modus == Modus.Anzeigen)
+            if (this._Modus == Modus.Anzeigen)
             {
                 //Close the window
                 this.Close();

@@ -10,7 +10,6 @@ namespace _20231127_ConnectedKunden
     {
         Neu,
         Aendern,
-        Loeschen,
         Anzeigen
     }
 }

@@ -17,6 +17,7 @@ namespace _20231127_ConnectedKunden
         private string _ConnectionString;
 
         private Kundenuebersicht _Ku;
+        private Lieferantenuebersicht _Li;
 
         public Form1()
         {
@@ -43,6 +44,18 @@ namespace _20231127_ConnectedKunden
                 _Ku.Size = new Size(100, 100);
                 _Ku.MdiParent = this;
                 _Ku.Show();
+                this.LayoutMdi(MdiLayout.TileHorizontal);
+            }
+        }
+
+        private void lieferantenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(this._Ku.ExitStatus == true)
+            {
+                _Li = new Lieferantenuebersicht(this._OleDBConnection);
+                _Li.Size = new Size(100, 100);
+                _Li.MdiParent = this;
+                _Li.Show();
                 this.LayoutMdi(MdiLayout.TileHorizontal);
             }
         }
