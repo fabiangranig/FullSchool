@@ -16,7 +16,7 @@ namespace _20240219_Geometrie
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Geometrie());
         }
     }
 }
