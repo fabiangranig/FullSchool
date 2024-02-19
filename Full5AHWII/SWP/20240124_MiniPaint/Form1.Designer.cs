@@ -36,6 +36,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel_currentMousePosition = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox_ResizeDiagonal = new System.Windows.Forms.PictureBox();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PaintingField)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -50,6 +51,7 @@
             this.pictureBox_PaintingField.Size = new System.Drawing.Size(626, 329);
             this.pictureBox_PaintingField.TabIndex = 0;
             this.pictureBox_PaintingField.TabStop = false;
+            this.pictureBox_PaintingField.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_PaintingField_Paint);
             this.pictureBox_PaintingField.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_PaintingField_MouseDown);
             this.pictureBox_PaintingField.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_PaintingField_MouseMove);
             this.pictureBox_PaintingField.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_PaintingField_MouseUp);
@@ -65,7 +67,8 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
+            this.toolStripButton1,
+            this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 25);
@@ -80,6 +83,7 @@
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // statusStrip1
             // 
@@ -109,6 +113,15 @@
             this.pictureBox_ResizeDiagonal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_ResizeDiagonal_MouseDown);
             this.pictureBox_ResizeDiagonal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_ResizeDiagonal_MouseMove);
             this.pictureBox_ResizeDiagonal.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_ResizeDiagonal_MouseUp);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
             // 
             // Form_Paint
             // 
@@ -144,6 +157,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_currentMousePosition;
         private System.Windows.Forms.PictureBox pictureBox_ResizeDiagonal;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }
 
