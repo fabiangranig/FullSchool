@@ -86,7 +86,7 @@
             this.label_Km.AutoSize = true;
             this.label_Km.Location = new System.Drawing.Point(12, 41);
             this.label_Km.Name = "label_Km";
-            this.label_Km.Size = new System.Drawing.Size(29, 16);
+            this.label_Km.Size = new System.Drawing.Size(32, 17);
             this.label_Km.TabIndex = 1;
             this.label_Km.Text = "Km:";
             // 
@@ -94,6 +94,7 @@
             // 
             this.textBox_Km.Location = new System.Drawing.Point(47, 41);
             this.textBox_Km.Name = "textBox_Km";
+            this.textBox_Km.ReadOnly = true;
             this.textBox_Km.Size = new System.Drawing.Size(100, 22);
             this.textBox_Km.TabIndex = 2;
             // 
@@ -101,6 +102,7 @@
             // 
             this.textBox_Meilen.Location = new System.Drawing.Point(242, 41);
             this.textBox_Meilen.Name = "textBox_Meilen";
+            this.textBox_Meilen.ReadOnly = true;
             this.textBox_Meilen.Size = new System.Drawing.Size(100, 22);
             this.textBox_Meilen.TabIndex = 3;
             // 
@@ -109,7 +111,7 @@
             this.label_Meilen.AutoSize = true;
             this.label_Meilen.Location = new System.Drawing.Point(186, 44);
             this.label_Meilen.Name = "label_Meilen";
-            this.label_Meilen.Size = new System.Drawing.Size(50, 16);
+            this.label_Meilen.Size = new System.Drawing.Size(53, 17);
             this.label_Meilen.TabIndex = 4;
             this.label_Meilen.Text = "Meilen:";
             // 
