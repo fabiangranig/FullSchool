@@ -19,10 +19,14 @@ namespace _20240226_Wegstrecke
         //Thread: auch Änderungen zeigen die in einem anderen Programm gemacht werden
 
         private Thread _ThreadUpdate;
+        private BindingSource _BindingSourceLieferant;
         private DataTable _DataTableLieferant;
 
         public Wegstrecke()
         {
+            //Initialize BindingSource
+            this._BindingSourceLieferant = new BindingSource();
+
             InitializeComponent();
             RefreshDataTable();
             GetDataFromTable();
@@ -54,8 +58,33 @@ namespace _20240226_Wegstrecke
             }
             else
             {
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = this._DataTableLieferant;
+                dataGridView1.DataSource = this._BindingSourceLieferant;
+            }
+        }
+
+        private void RefreshDataTable()
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new Action(RefreshDataTable));
+            }
+            else
+            {
+                string connectionstring = "Data Source=Wegstrecken.mdb; Provider=Microsoft.Jet.OLEDB.4.0";
+                OleDbConnection oleDbConnection = new OleDbConnection(connectionstring);
+
+                oleDbConnection.Open();
+                OleDbCommand Command = new OleDbCommand();
+                Command.Connection = oleDbConnection;
+                Command.CommandText = "SELECT * FROM Lieferungen;";
+                OleDbDataReader DataReader = Command.ExecuteReader();
+
+                //Load table into dataGridView
+                this._DataTableLieferant = new DataTable();
+                this._DataTableLieferant.Clear();
+                this._DataTableLieferant.Load(DataReader);
+                this._BindingSourceLieferant.DataSource = this._DataTableLieferant;
+                oleDbConnection.Close();
             }
         }
 
@@ -81,24 +110,6 @@ namespace _20240226_Wegstrecke
                 //Wait for 3 seconds and then do again
                 Thread.Sleep(3000);
             }
-        }
-
-        private void RefreshDataTable()
-        {
-            string connectionstring = "Data Source=Wegstrecken.mdb; Provider=Microsoft.Jet.OLEDB.4.0";
-            OleDbConnection oleDbConnection = new OleDbConnection(connectionstring);
-
-            oleDbConnection.Open();
-            OleDbCommand Command = new OleDbCommand();
-            Command.Connection = oleDbConnection;
-            Command.CommandText = "SELECT * FROM Lieferungen;";
-            OleDbDataReader DataReader = Command.ExecuteReader();
-
-            //Load table into dataGridView
-            this._DataTableLieferant = new DataTable();
-            this._DataTableLieferant.Clear();
-            this._DataTableLieferant.Load(DataReader);
-            oleDbConnection.Close();
         }
 
         private void GetDataFromTable()
