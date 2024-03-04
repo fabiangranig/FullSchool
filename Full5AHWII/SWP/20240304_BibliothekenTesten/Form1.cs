@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using _20240304_MeineBibliothek;
+using _20240304_MeineBibliothekFramework;
 
 namespace _20240304_BibliothekenTesten
 {
@@ -27,6 +28,10 @@ namespace _20240304_BibliothekenTesten
             Sort sort = new Sort(new int[]{ 2, 10, 3, 1 });
             sort.BubbleSort();
             MessageBox.Show(sort.Anzeigen());
+
+            //Draw new control element
+            UserTextBox userTextBox = new UserTextBox();
+            this.Controls.Add(userTextBox);
         }
     }
 }
