@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{34799A76-BAA5-468A-8000-2DFF4231966C}</ProjectGuid>
+    <ProjectGuid>{C42398D8-9110-483B-8A71-4DEE280EF2F8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>_20240304_BibliothekenTesten</RootNamespace>
-    <AssemblyName>20240304_BibliothekenTesten</AssemblyName>
+    <RootNamespace>_20240311_GDI_Rund_Button</RootNamespace>
+    <AssemblyName>20240311_GDI_Rund_Button</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,19 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="20240304_MeineBibliothek, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\20240304_MeineBibliothek\bin\Debug\netstandard2.0\20240304_MeineBibliothek.dll</HintPath>
-    </Reference>
-    <Reference Include="20240304_MeineBibliothekFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\20240304_MeineBibliothekFramework\bin\Debug\20240304_MeineBibliothekFramework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />

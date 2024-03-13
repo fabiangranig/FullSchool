@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "20240311_GDI_Rund_Button", "20240311_GDI_Rund_Button.csproj", "{C42398D8-9110-483B-8A71-4DEE280EF2F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C42398D8-9110-483B-8A71-4DEE280EF2F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C42398D8-9110-483B-8A71-4DEE280EF2F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C42398D8-9110-483B-8A71-4DEE280EF2F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C42398D8-9110-483B-8A71-4DEE280EF2F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19ABBFD6-A2C4-46A5-8C1F-5D8432A4D670}
+	EndGlobalSection
+EndGlobal

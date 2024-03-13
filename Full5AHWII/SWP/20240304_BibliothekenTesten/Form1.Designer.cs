@@ -34,7 +34,7 @@
             // 
             // button_TestDLL
             // 
-            this.button_TestDLL.Location = new System.Drawing.Point(496, 311);
+            this.button_TestDLL.Location = new System.Drawing.Point(653, 375);
             this.button_TestDLL.Name = "button_TestDLL";
             this.button_TestDLL.Size = new System.Drawing.Size(135, 63);
             this.button_TestDLL.TabIndex = 0;
@@ -46,7 +46,7 @@
             // 
             this.userTextBox1.Location = new System.Drawing.Point(12, 12);
             this.userTextBox1.Name = "userTextBox1";
-            this.userTextBox1.Size = new System.Drawing.Size(347, 238);
+            this.userTextBox1.Size = new System.Drawing.Size(776, 357);
             this.userTextBox1.TabIndex = 1;
             this.userTextBox1.TextBeschreibung = "Hallo";
             // 
